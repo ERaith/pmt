@@ -1,1 +1,28 @@
-  
+import React from 'react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import Pokedex from './Pokedex';
+import { rootReducer } from '../../reducers/index';
+import { mockPokemonList } from './mockTestFiles';
+import { fetchPokemon } from '../../apiCalls/apiCalls';
+
+jest.mock('../../apiCalls/apiCalls');
+
+describe('Pokedex Tests', () => {
+  // eslint-disable-next-line one-var
+  let initialState, store, testWrapper;
+  beforeEach(() => {
+    fetchPokemon.mockResolvedValue(mockPokemonList);
+    store = createStore(rootReducer);
+    testWrapper = (
+      <Provider store={store}>
+        <Pokedex />
+      </Provider>
+    );
+  });
+  it('renders the pokedex', async () => {
+    const { getByAltText } = render(testWrapper);
+    await waitFor(() => expect(getByAltText('bulbasaur')).toBeInTheDocument());
+  });
+});

@@ -6,7 +6,7 @@ export const PokemonMini = ({pokemon}) => {
     <img
       className="pokemon-image"
       src={pokemon.sprites.front_default}
-      alt={`pokemon Name here`}
+      alt={`${pokemon.name}`}
     />
   );
 };

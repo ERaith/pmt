@@ -1,25 +1,24 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { render } from '@testing-library/react';
 import { fetchPokemon } from '../../apiCalls/apiCalls';
 import { getPokemonList } from '../../actionCreators/index';
 import { PokemonMini } from '../PokemonMini/PokemonMini';
 
-export class Pokedex extends React.Component {
-  pokemonList = async () => {
+class Pokedex extends React.Component {
+  fetchPokemonList = async () => {
+    // eslint-disable-next-line no-shadow
     const { getPokemonList } = this.props;
     const pokemonData = await fetchPokemon();
     getPokemonList(pokemonData);
-    console.log(pokemonData);
     return pokemonData;
   };
 
   renderPokemon = () => {
-    return this.props.pokemonList.length > 0 ? (
-      this.props.pokemonList.map((pokemon) => {
-        return <PokemonMini pokemon={pokemon} />;
+    const { pokemonList } = this.props;
+    return pokemonList.length > 0 ? (
+      pokemonList.map((pokemon) => {
+        return <PokemonMini pokemon={pokemon} key={pokemon.id} />;
       })
     ) : (
       <span>No Pokemon exist for that Querry</span>
@@ -27,7 +26,7 @@ export class Pokedex extends React.Component {
   };
 
   componentDidMount = () => {
-    this.pokemonList();
+    this.fetchPokemonList();
   };
 
   render() {
