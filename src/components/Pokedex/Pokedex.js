@@ -5,17 +5,25 @@ import { bindActionCreators } from 'redux';
 import { render } from '@testing-library/react';
 import { fetchPokemon } from '../../apiCalls/apiCalls';
 import { getPokemonList } from '../../actionCreators/index';
+import { PokemonMini } from '../PokemonMini/PokemonMini';
 
 export class Pokedex extends React.Component {
-  constructor(){
-    super();
-  }
   pokemonList = async () => {
-    const {getPokemonList} = this.props;
+    const { getPokemonList } = this.props;
     const pokemonData = await fetchPokemon();
-    getPokemonList(pokemonData)
+    getPokemonList(pokemonData);
     console.log(pokemonData);
     return pokemonData;
+  };
+
+  renderPokemon = () => {
+    return this.props.pokemonList.length > 0 ? (
+      this.props.pokemonList.map((pokemon) => {
+        return <PokemonMini pokemon={pokemon} />;
+      })
+    ) : (
+      <span>No Pokemon exist for that Querry</span>
+    );
   };
 
   componentDidMount = () => {
@@ -23,7 +31,7 @@ export class Pokedex extends React.Component {
   };
 
   render() {
-    return <div>Pokemon</div>;
+    return <div>{this.renderPokemon()}</div>;
   }
 }
 
