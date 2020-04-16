@@ -1,7 +1,7 @@
 const defaultState = {
   pokemonList: [],
 };
-export const pokemonList = (state = defaultState, action) => {
+const pokemonList = (state = defaultState, action) => {
   switch (action.type) {
     case 'POKEMON_LIST':
       return action.pokemon;
@@ -9,3 +9,5 @@ export const pokemonList = (state = defaultState, action) => {
       return state;
   }
 };
+
+export default pokemonList;
