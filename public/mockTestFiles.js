@@ -19157,3 +19157,5 @@ export const mockPokemonList = [
     weight: 130,
   },
 ];
+
+export const mockPokemon = mockPokemonList[0]

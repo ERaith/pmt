@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Pokedex from './Pokedex';
 import { rootReducer } from '../../reducers/index';
-import { mockPokemonList } from './mockTestFiles';
+import { mockPokemonList } from '../../../public/mockTestFiles';
 import { fetchPokemon } from '../../apiCalls/apiCalls';
 
 jest.mock('../../apiCalls/apiCalls');
