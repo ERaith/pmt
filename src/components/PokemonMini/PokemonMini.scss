@@ -10,7 +10,27 @@
   display: flex;
   flex-direction: column;
   width:8rem;
-  align-items: center;
+	align-items: center;
+	box-shadow: 5px 5px 5px rgba(8, 112, 184, 0.7);
+	margin: 8px;
+	img{
+		&:hover {
+			animation: bounce .5s infinite;
+		}
+	}
+}
+
+@keyframes bounce {
+	0%, 50%, 100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	50% {
+		-webkit-transform: translateY(-5px);
+		transform: translateY(-5px);
+	}
+
 }
 
 
@@ -119,4 +139,144 @@
 .dragon {
 	background-color: #7038F8;
 	border: 1px solid #4924A1;
+}
+
+
+// Variables
+$prefix:          tooltip;
+$contentAttr:    data-tooltip;
+$trigger:        data-trigger;
+$placement:      data-placement;
+$black:          #000;
+$white:          #fff;
+
+// The main tooltip class
+.#{$prefix} {
+  outline: none;
+  position: relative;
+	
+  // Hide the tooltip when not active
+  &:after,
+  &:before {
+    font-size: 1rem;
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    text-decoration: none;
+    transition: opacity .3s linear 0s;
+    visibility: hidden;
+  }
+
+  // The actual tooltip styles
+  &:after {
+    content: attr(#{$contentAttr});
+    background-color: $black;
+    color: $white;
+    padding: 6px;
+    white-space: nowrap;
+  }
+
+// Tooltip trigger
+  &[#{$trigger}="hover"]:hover:before,
+  &[#{$trigger}="hover"]:hover:after,
+  &[#{$trigger}="focus"]:focus:before,
+  &[#{$trigger}="focus"]:focus:after {
+    opacity: 1;
+    transition: opacity .3s linear 0s;
+    visibility: visible;
+    z-index: 2;
+  }
+
+  // Tooltip placement top
+  &[#{$placement}="top"]:after,
+  &[#{$placement}="top"]:before {
+    bottom: 60%;
+  }
+	
+  &[#{$placement}="top"]:after {
+    border-radius: 4px;
+    left: 00%;
+    margin: 0 0 14px 0;
+    // transform: translate(50%);
+  }
+	
+  &[#{$placement}="top"]:before {
+    content: "";
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-top: 8px solid black;
+    left: 0%;
+    margin: 0 0 7px 0;
+    transform: translate(50%);
+  }
+	
+  // Tooltip placement right
+  &[#{$placement}="right"]:after,
+  &[#{$placement}="right"]:before {
+    left: 100%;
+  }
+	
+  &[#{$placement}="right"]:after {
+    border-radius: 4px;
+    margin: 0 0 0 14px;
+    top: 50%;
+    transform: translate(50%);
+  }
+	
+  &[#{$placement}="right"]:before {
+    content: "";
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-right: 8px solid black;
+    margin: 0 0 0 7px;
+    top: 50%;
+    transform: translate(50%);
+  }		
+	
+  // Tooltip placement bottom
+  &[#{$placement}="bottom"]:after,
+  &[#{$placement}="bottom"]:before {
+    top:100%;
+  }
+	
+  &[#{$placement}="bottom"]:after {
+    border-radius: 4px;
+    left: 50%;
+    margin: 15px 0 0 0;
+    transform: translate(50%);
+  }
+	
+    &[#{$placement}="bottom"]:before {
+    content: "";
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-bottom: 8px solid $black;
+    left: 50%;
+    margin: 8px 0 0 0;
+    transform: translate(50%);
+  }
+	
+  // Tooltip placement left
+  &[#{$placement}="left"]:after,
+  &[#{$placement}="left"]:before {
+    right: 100%;
+  }
+	
+  &[#{$placement}="left"]:after {
+    border-radius: 4px;
+    margin: 0 15px 0 0;
+    top: 50%;
+    transform: translate(50%);
+  }
+	
+  &[#{$placement}="left"]:before {
+    content: "";
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-left: 8px solid $black;
+    margin: 0 7px 0 0;
+    top: 50%;
+    transform: translate(50%);
+  }
+
 }
