@@ -30,7 +30,11 @@ class Pokedex extends React.Component {
   };
 
   render() {
-    return <div>{this.renderPokemon()}</div>;
+    return (
+      <article className="pokemon-mini-container">
+        {this.renderPokemon()}
+      </article>
+    );
   }
 }
 
