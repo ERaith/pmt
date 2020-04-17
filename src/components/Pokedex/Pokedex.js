@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { fetchPokemon } from '../../apiCalls/apiCalls';
 import { getPokemonList } from '../../actionCreators/index';
 import { PokemonMini } from '../PokemonMini/PokemonMini';
+import Searchbar from '../Seachbar/Searchbar';
 
 class Pokedex extends React.Component {
   fetchPokemonList = async () => {
@@ -31,9 +32,12 @@ class Pokedex extends React.Component {
 
   render() {
     return (
-      <article className="pokemon-mini-container">
-        {this.renderPokemon()}
-      </article>
+      <section>
+        <Searchbar />
+        <article className="pokemon-mini-container">
+          {this.renderPokemon()}
+        </article>
+      </section>
     );
   }
 }
