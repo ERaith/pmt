@@ -9,7 +9,7 @@
   }
   display: flex;
   flex-direction: column;
-  width:8rem;
+  width:9rem;
 	align-items: center;
 	box-shadow: 5px 5px 5px rgba(8, 112, 184, 0.7);
 	margin: 8px;
@@ -33,14 +33,6 @@
 
 }
 
-
-.left {
-	float: left;
-}
-
-.clear {
- clear: both;
-}
 .type {
 	margin: 5px;
 	padding: 5px 8px 5px 8px;
@@ -141,7 +133,6 @@
 	border: 1px solid #4924A1;
 }
 
-
 // Variables
 $prefix:          tooltip;
 $contentAttr:    data-tooltip;
@@ -178,9 +169,7 @@ $white:          #fff;
 
 // Tooltip trigger
   &[#{$trigger}="hover"]:hover:before,
-  &[#{$trigger}="hover"]:hover:after,
-  &[#{$trigger}="focus"]:focus:before,
-  &[#{$trigger}="focus"]:focus:after {
+  &[#{$trigger}="hover"]:hover:after, {
     opacity: 1;
     transition: opacity .3s linear 0s;
     visibility: visible;
@@ -209,74 +198,4 @@ $white:          #fff;
     margin: 0 0 7px 0;
     transform: translate(50%);
   }
-	
-  // Tooltip placement right
-  &[#{$placement}="right"]:after,
-  &[#{$placement}="right"]:before {
-    left: 100%;
-  }
-	
-  &[#{$placement}="right"]:after {
-    border-radius: 4px;
-    margin: 0 0 0 14px;
-    top: 50%;
-    transform: translate(50%);
-  }
-	
-  &[#{$placement}="right"]:before {
-    content: "";
-    border-bottom: 8px solid transparent;
-    border-top: 8px solid transparent;
-    border-right: 8px solid black;
-    margin: 0 0 0 7px;
-    top: 50%;
-    transform: translate(50%);
-  }		
-	
-  // Tooltip placement bottom
-  &[#{$placement}="bottom"]:after,
-  &[#{$placement}="bottom"]:before {
-    top:100%;
-  }
-	
-  &[#{$placement}="bottom"]:after {
-    border-radius: 4px;
-    left: 50%;
-    margin: 15px 0 0 0;
-    transform: translate(50%);
-  }
-	
-    &[#{$placement}="bottom"]:before {
-    content: "";
-    border-right: 8px solid transparent;
-    border-left: 8px solid transparent;
-    border-bottom: 8px solid $black;
-    left: 50%;
-    margin: 8px 0 0 0;
-    transform: translate(50%);
-  }
-	
-  // Tooltip placement left
-  &[#{$placement}="left"]:after,
-  &[#{$placement}="left"]:before {
-    right: 100%;
-  }
-	
-  &[#{$placement}="left"]:after {
-    border-radius: 4px;
-    margin: 0 15px 0 0;
-    top: 50%;
-    transform: translate(50%);
-  }
-	
-  &[#{$placement}="left"]:before {
-    content: "";
-    border-bottom: 8px solid transparent;
-    border-top: 8px solid transparent;
-    border-left: 8px solid $black;
-    margin: 0 7px 0 0;
-    top: 50%;
-    transform: translate(50%);
-  }
-
 }

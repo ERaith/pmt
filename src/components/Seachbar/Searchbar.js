@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { nameFilter, typeFilter ,generalFilter} from '../../utils';
+import { nameFilter, typeFilter, generalFilter } from '../../utils';
 import { getPokemonList, filterPokemon } from '../../actionCreators/index';
 import './Searchbar.scss';
 
@@ -20,20 +20,20 @@ class Searchbar extends React.Component {
     let searchName = this.state.name;
     let searchType = this.state.type;
 
-    let { pokemonList, filterPokemon,filteredPokemon} = this.props;
+    let { pokemonList, filterPokemon, filteredPokemon } = this.props;
     switch (name) {
       case 'name':
-        if(value.length>searchName.length){
+        if (value.length > searchName.length) {
           pokemonList = filteredPokemon;
         }
-        filteredPokemon = generalFilter(pokemonList, value,searchType);
+        filteredPokemon = generalFilter(pokemonList, value, searchType);
         filterPokemon(filteredPokemon);
         break;
       case 'type':
-        if(value.length>searchType.length){
+        if (value.length > searchType.length) {
           pokemonList = filteredPokemon;
         }
-        filteredPokemon = generalFilter(pokemonList, searchName,value);
+        filteredPokemon = generalFilter(pokemonList, searchName, value);
         filterPokemon(filteredPokemon);
         break;
 
@@ -51,28 +51,32 @@ class Searchbar extends React.Component {
     const { name, type } = this.state;
     return (
       <form aria-label="Login Form">
-        <input
-          type="text"
-          placeholder="Seach Name"
-          name="name"
-          value={name}
-          onChange={(event) => this.handleChange(event)}
-        />
-        <input
-          type="text"
-          placeholder="Seach Type"
-          name="type"
-          value={type}
-          onChange={(event) => this.handleChange(event)}
-        />
-        <button
-          type="button"
-          onClick={this.handleSubmit}
-          className="submit-btn"
-          aria-label="Submit Log In Form"
-        >
-          Search!
-        </button>
+        <div className="form_group">
+          <input
+            className="form_field"
+            type="text"
+            placeholder="Seach Name"
+            name="name"
+            value={name}
+            onChange={(event) => this.handleChange(event)}
+          />
+          <label className="form_label" for="name">
+            Search by Name
+          </label>
+        </div>
+        <div className="form_group">
+          <input
+            className="form_field"
+            type="text"
+            placeholder="Seach Type"
+            name="type"
+            value={type}
+            onChange={(event) => this.handleChange(event)}
+          />
+          <label className="form_label" for="type">
+            Search by Type
+          </label>
+        </div>
       </form>
     );
   }
