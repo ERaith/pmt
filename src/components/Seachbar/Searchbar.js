@@ -1,7 +1,8 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { pokemonfilter } from '../../utils';
+import { getPokemonList, filterPokemon } from '../../actionCreators/index';
 import './Searchbar.scss';
 
 class Searchbar extends React.Component {
@@ -14,10 +15,13 @@ class Searchbar extends React.Component {
 
   handleChange = (event) => {
     event.preventDefault();
+    let filteredPokemon = pokemonfilter(this.props.pokemonList,event.target.value)
+    this.props.filterPokemon(filteredPokemon)
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
+
   };
 
   render() {
@@ -44,4 +48,12 @@ class Searchbar extends React.Component {
   }
 }
 
-export default Searchbar;
+const mapStateToProps = ({ pokemonList, pokemonFiltered }) => ({
+  pokemonList,
+  pokemonFiltered,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ filterPokemon }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);
