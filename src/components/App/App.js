@@ -1,12 +1,10 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Pokedex from '../Pokedex/Pokedex';
+import Team from '../Team/Team';
 
 class App extends React.Component {
   render() {
-    return <section className="app"><Pokedex /></section>;
+    return <section className="app"><Team /><Pokedex /></section>;
   }
 }
 
