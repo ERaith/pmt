@@ -1,4 +1,4 @@
-export const getPokemonList = (pokemon) => ({
+export const loadPokemonList = (pokemon) => ({
   type: 'POKEMON_LIST',
   pokemon,
 });
@@ -8,7 +8,7 @@ export const filterPokemon = (pokemon) => ({
   pokemon,
 });
 
-export const getPokemonTeam = (pokemon) => ({
-  type: 'TEAM',
+export const addPokemonToTeam = (pokemon) => ({
+  type: 'TEAM_LIST',
   pokemon,
 });
