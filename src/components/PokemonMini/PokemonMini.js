@@ -13,12 +13,18 @@ export const PokemonMini = ({ pokemon }) => {
   };
   return (
     <div className="pokemon-mini">
-      <h4>{pokemon.name}</h4>
-      <img
-        className="pokemon-image"
-        src={pokemon.sprites.front_default}
-        alt={`${pokemon.name}`}
-      />
+      <span
+        className="tooltip"
+        data-tooltip={pokemon.name}
+        data-placement="top"
+        data-trigger="hover"
+      >
+        <img
+          className="pokemon-image"
+          src={pokemon.sprites.front_default}
+          alt={`${pokemon.name}`}
+        />
+      </span>
       <div>{type()}</div>
     </div>
   );

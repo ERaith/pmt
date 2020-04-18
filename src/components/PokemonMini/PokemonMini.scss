@@ -9,18 +9,30 @@
   }
   display: flex;
   flex-direction: column;
-  width:8rem;
-  align-items: center;
+  width:9rem;
+	align-items: center;
+	box-shadow: 5px 5px 5px rgba(8, 112, 184, 0.7);
+	margin: 8px;
+	img{
+		&:hover {
+			animation: bounce .5s infinite;
+		}
+	}
 }
 
+@keyframes bounce {
+	0%, 50%, 100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
 
-.left {
-	float: left;
+	50% {
+		-webkit-transform: translateY(-5px);
+		transform: translateY(-5px);
+	}
+
 }
 
-.clear {
- clear: both;
-}
 .type {
 	margin: 5px;
 	padding: 5px 8px 5px 8px;
@@ -119,4 +131,71 @@
 .dragon {
 	background-color: #7038F8;
 	border: 1px solid #4924A1;
+}
+
+// Variables
+$prefix:          tooltip;
+$contentAttr:    data-tooltip;
+$trigger:        data-trigger;
+$placement:      data-placement;
+$black:          #000;
+$white:          #fff;
+
+// The main tooltip class
+.#{$prefix} {
+  outline: none;
+  position: relative;
+	
+  // Hide the tooltip when not active
+  &:after,
+  &:before {
+    font-size: 1rem;
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    text-decoration: none;
+    transition: opacity .3s linear 0s;
+    visibility: hidden;
+  }
+
+  // The actual tooltip styles
+  &:after {
+    content: attr(#{$contentAttr});
+    background-color: $black;
+    color: $white;
+    padding: 6px;
+    white-space: nowrap;
+  }
+
+// Tooltip trigger
+  &[#{$trigger}="hover"]:hover:before,
+  &[#{$trigger}="hover"]:hover:after, {
+    opacity: 1;
+    transition: opacity .3s linear 0s;
+    visibility: visible;
+    z-index: 2;
+  }
+
+  // Tooltip placement top
+  &[#{$placement}="top"]:after,
+  &[#{$placement}="top"]:before {
+    bottom: 60%;
+  }
+	
+  &[#{$placement}="top"]:after {
+    border-radius: 4px;
+    left: 00%;
+    margin: 0 0 14px 0;
+    // transform: translate(50%);
+  }
+	
+  &[#{$placement}="top"]:before {
+    content: "";
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-top: 8px solid black;
+    left: 0%;
+    margin: 0 0 7px 0;
+    transform: translate(50%);
+  }
 }

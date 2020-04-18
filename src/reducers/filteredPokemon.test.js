@@ -1,27 +1,27 @@
-import pokemonList from '../reducers/pokemonList';
+import filteredPokemon from '../reducers/filteredPokemon';
 import mockPokemonList from '../../public/mockTestFiles';
 
-describe('Reducer: pokemonList', () => {
+describe('Reducer: filteredPokemon', () => {
   it('should return the initial state', () => {
     // Setup
     const expected = {
-      pokemonList: [],
+      filterPokemon: [],
     };
 
     // Execution
-    const result = pokemonList(undefined, {});
+    const result = filteredPokemon(undefined, {});
 
     // Expectation
     expect(result).toEqual(expected);
   });
 
-  it('should update the pokemonlist', () => {
+  it('should update filtered pokemon', () => {
     // Setup
     const expected = mockPokemonList;
-    const action = { type: 'POKEMON_LIST', pokemon: mockPokemonList };
+    const action = { type: 'POKEMON_FILTERED_LIST', pokemon: mockPokemonList };
 
     // Execution
-    const result = pokemonList(undefined, action);
+    const result = filteredPokemon(undefined, action);
 
     // Expectation
     expect(result).toEqual(expected);

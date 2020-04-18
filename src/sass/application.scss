@@ -1,15 +1,15 @@
-@import "./_variables.scss";
-@import "./_mixins.scss";
-@import "../components/PokemonMini/PokemonMini.scss";
-@import "../components/Pokedex/Pokedex.scss";
+@import './_variables.scss';
+@import './_mixins.scss';
+@import '../components/PokemonMini/PokemonMini.scss';
+@import '../components/Pokedex/Pokedex.scss';
+@import '../components/Seachbar/Searchbar.scss';
+@import '../components/App/App.scss';
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  font-size: 1.5rem;
+  background-color: $main_background_color;
 }
 
 code {

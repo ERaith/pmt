@@ -22,11 +22,13 @@
 - [ ] index.test.js
 #### components   
 - [ ] App.js
+- [ ] Searchbar.js
 - [ ] Header.js
 - [ ] Pokedex.js
 - [ ] PokemonMini.js
 #### components-tests   
 - [ ] App.test.js
+- [ ] Searchbar.test.js
 - [ ] Header.test.js
 - [ ] Pokedex.test.js
 - [ ] PokemonMini.test.js
