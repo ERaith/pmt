@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { nameFilter, typeFilter, generalFilter } from '../../utils';
-import { getPokemonList, filterPokemon } from '../../actionCreators/index';
+import {  filterPokemon } from '../../actionCreators/index';
 import './Searchbar.scss';
 
 class Searchbar extends React.Component {
@@ -57,10 +57,11 @@ class Searchbar extends React.Component {
             type="text"
             placeholder="Seach Name"
             name="name"
+            aria-label="Search by Name"
             value={name}
             onChange={(event) => this.handleChange(event)}
           />
-          <label className="form_label" for="name">
+          <label className="form_label" htmlFor="name">
             Search by Name
           </label>
         </div>
@@ -70,10 +71,11 @@ class Searchbar extends React.Component {
             type="text"
             placeholder="Seach Type"
             name="type"
+            aria-label="Search by Type"
             value={type}
             onChange={(event) => this.handleChange(event)}
           />
-          <label className="form_label" for="type">
+          <label className="form_label" htmlFor="type">
             Search by Type
           </label>
         </div>

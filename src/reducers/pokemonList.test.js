@@ -1,7 +1,7 @@
 import pokemonList from '../reducers/pokemonList';
 import mockPokemonList from '../../public/mockTestFiles';
 
-describe('Reducer: showLoginModal', () => {
+describe('Reducer: pokemonList', () => {
   it('should return the initial state', () => {
     // Setup
     const expected = {
@@ -15,7 +15,7 @@ describe('Reducer: showLoginModal', () => {
     expect(result).toEqual(expected);
   });
 
-  it('should login user', () => {
+  it('should update the pokemonlist', () => {
     // Setup
     const expected = mockPokemonList;
     const action = { type: 'POKEMON_LIST', pokemon: mockPokemonList };
