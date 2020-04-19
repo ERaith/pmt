@@ -3,19 +3,21 @@
   border:black .1rem solid;
   display:inline-block;
   &:hover {
-    background-image: url('/images/pokeball_hover.png');
-    background-repeat: no-repeat;
-    background-position: center;
+
   }
   display: flex;
   flex-direction: column;
   width:9rem;
+  height:9rem;
 	align-items: center;
 	box-shadow: 5px 5px 5px rgba(8, 112, 184, 0.7);
 	margin: 8px;
 	img{
 		&:hover {
 			animation: bounce .5s infinite;
+			background-image: url('/images/pokeball_hover.png');
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 	}
 }

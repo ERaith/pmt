@@ -17,3 +17,8 @@ export const showDetails = (pokemonDetails) => ({
   type: 'SHOW_DETAILS',
   pokemonDetails,
 });
+
+export const loadTypes = (typeDetails) => ({
+  type: 'LOAD_TYPES',
+  typeDetails,
+});

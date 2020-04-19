@@ -9,7 +9,9 @@ import PokemonMini from '../PokemonMini/PokemonMini';
 export const Team = ({ pokemonTeam, details }) => {
   const renderPokemonTeam = () => {
     let emptyNum = 6-pokemonTeam.length
-    
+    let pokemonTeamDefault = new Array(emptyNum);
+    pokemonTeamDefault.fill({name:'placeholder'})    
+    pokemonTeam = pokemonTeam.concat(pokemonTeamDefault)
     return (
       <article className="pokemon-mini-container">
         {pokemonTeam.map((pokemon) => {
