@@ -8,7 +8,15 @@ export const fetchPokemon = async () => {
   const pokemonData = await Promise.all(
     generalPokemonData.results.map(async (pokemon) => {
       const detailedResponse = await fetch(pokemon.url);
-      return detailedResponse.json();
+      let cleanData = await detailedResponse.json();
+      cleanData = {
+        abilities:cleanData.abilities,
+        sprites:cleanData.sprites,
+        stats:cleanData.stats,
+        types:cleanData.types,
+        name:cleanData.name,
+      }
+      return cleanData;
     }),
   );
   return pokemonData;
