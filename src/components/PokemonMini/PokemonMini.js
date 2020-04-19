@@ -35,6 +35,9 @@ export const PokemonMini = ({
 
   return (
     <div className="pokemon-mini">
+      {pokemon.name==='placeholder'?
+      <span>Choose Your Pokemon</span>
+    :<>
       <span
         className="tooltip"
         data-tooltip={pokemon.name}
@@ -49,6 +52,8 @@ export const PokemonMini = ({
         />
       </span>
       <div>{type()}</div>
+    </>
+    }
     </div>
   );
 };
