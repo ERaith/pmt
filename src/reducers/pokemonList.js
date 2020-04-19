@@ -1,6 +1,4 @@
-const defaultState = {
-  pokemonList: [],
-};
+const defaultState = [];
 const pokemonList = (state = defaultState, action) => {
   switch (action.type) {
     case 'POKEMON_LIST':

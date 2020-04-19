@@ -1,9 +1,11 @@
 @import './_variables.scss';
 @import './_mixins.scss';
+@import './_reset.scss';
 @import '../components/PokemonMini/PokemonMini.scss';
 @import '../components/Pokedex/Pokedex.scss';
 @import '../components/Seachbar/Searchbar.scss';
 @import '../components/App/App.scss';
+@import '../components/Team/Team.scss';
 
 body {
   font-family: 'Poppins', sans-serif;

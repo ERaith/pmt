@@ -1,6 +1,4 @@
-const defaultState = {
-  filterPokemon: [],
-};
+const defaultState = [];
 const filterPokemon = (state = defaultState, action) => {
   switch (action.type) {
     case 'POKEMON_FILTERED_LIST':

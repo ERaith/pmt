@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPokemon } from '../../apiCalls/apiCalls';
-import { getPokemonList, filterPokemon } from '../../actionCreators/index';
-import { PokemonMini } from '../PokemonMini/PokemonMini';
+import { loadPokemonList, filterPokemon } from '../../actionCreators/index';
+import PokemonMini from '../PokemonMini/PokemonMini';
 import Searchbar from '../Seachbar/Searchbar';
 
 class Pokedex extends React.Component {
   fetchPokemonList = async () => {
     // eslint-disable-next-line no-shadow
-    const { getPokemonList,filterPokemon } = this.props;
+    const { getPokemonList, filterPokemon } = this.props;
     const pokemonData = await fetchPokemon();
     getPokemonList(pokemonData);
     filterPokemon(pokemonData);
@@ -19,7 +19,7 @@ class Pokedex extends React.Component {
     const { filteredPokemon } = this.props;
     return filteredPokemon.length > 0 ? (
       filteredPokemon.map((pokemon) => {
-        return <PokemonMini pokemon={pokemon} key={pokemon.id} />;
+        return <PokemonMini pokemon={pokemon} key={pokemon.id} whereami = "Pokedex" />;
       })
     ) : (
       <span>No Pokemon exist for that Querry</span>
@@ -48,6 +48,9 @@ const mapStateToProps = ({ pokemonList, filteredPokemon }) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ getPokemonList, filterPokemon }, dispatch);
+  bindActionCreators(
+    { getPokemonList: loadPokemonList, filterPokemon },
+    dispatch,
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokedex);
