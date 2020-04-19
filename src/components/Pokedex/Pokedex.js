@@ -19,7 +19,7 @@ class Pokedex extends React.Component {
     const { filteredPokemon } = this.props;
     return filteredPokemon.length > 0 ? (
       filteredPokemon.map((pokemon) => {
-        return <PokemonMini pokemon={pokemon} key={pokemon.id} />;
+        return <PokemonMini pokemon={pokemon} key={pokemon.id} whereami = "Pokedex" />;
       })
     ) : (
       <span>No Pokemon exist for that Querry</span>

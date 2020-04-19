@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addPokemonToTeam } from '../../actionCreators/index';
+import { addPokemonToTeam, showDetails } from '../../actionCreators/index';
 
-export const PokemonMini = ({ pokemon, addPokemonToTeam, pokemonTeam }) => {
+export const PokemonMini = ({
+  whereami,
+  pokemon,
+  addPokemonToTeam,
+  pokemonTeam,
+  showDetails,
+}) => {
   const type = () => {
     return pokemon.types.map((slot) => {
       return (
@@ -14,8 +20,17 @@ export const PokemonMini = ({ pokemon, addPokemonToTeam, pokemonTeam }) => {
       );
     });
   };
-  const handlePokemonAdd = () => {
-    pokemonTeam.length < 6 && addPokemonToTeam(pokemon);
+  const handlePokemon = () => {
+    switch (whereami) {
+      case 'Team':
+        showDetails(pokemon);
+        break;
+      case 'Pokedex':
+        pokemonTeam.length < 6 && addPokemonToTeam(pokemon);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -25,7 +40,7 @@ export const PokemonMini = ({ pokemon, addPokemonToTeam, pokemonTeam }) => {
         data-tooltip={pokemon.name}
         data-placement="top"
         data-trigger="hover"
-        onClick={() => handlePokemonAdd()}
+        onClick={() => handlePokemon()}
       >
         <img
           className="pokemon-image"
@@ -43,6 +58,6 @@ const mapStateToProps = ({ pokemonTeam }) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ addPokemonToTeam }, dispatch);
+  bindActionCreators({ addPokemonToTeam,showDetails }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonMini);

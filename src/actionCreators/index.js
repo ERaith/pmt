@@ -12,3 +12,8 @@ export const addPokemonToTeam = (pokemon) => ({
   type: 'TEAM_LIST',
   pokemon,
 });
+
+export const showDetails = (pokemonDetails) => ({
+  type: 'SHOW_DETAILS',
+  pokemonDetails,
+});

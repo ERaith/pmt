@@ -1,5 +1,9 @@
 .team-view-container{
   display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.pokemon-details{
+  background-color: grey;
+  padding:2rem;
 }
