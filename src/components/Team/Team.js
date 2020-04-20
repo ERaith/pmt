@@ -97,10 +97,12 @@ class Team extends React.Component {
   };
 
   handleSubmit = (event) => {
+    event.preventDefault();
     const { pokemonTeam, saveTeam } = this.props;
     saveTeam(pokemonTeam, this.state.teamName);
   };
   handleRemove = (event) => {
+    event.preventDefault();
     const { removeTeam } = this.props;
     removeTeam(this.state.teamName);
   };
