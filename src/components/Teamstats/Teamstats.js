@@ -23,7 +23,11 @@ class Teamstats extends React.Component {
   makeTable = () => {
     const { typeDetails, pokemonTeam } = this.props;
     let header = pokemonTeam.map((pokemon) => {
-      let headerElement = <td>{pokemon.name}</td>;
+      let headerElement = (
+        <th>
+          <img src={pokemon.sprites.front_default} />
+        </th>
+      );
       return headerElement;
     });
     let tableBody = Object.keys(typeDetails);
@@ -31,19 +35,24 @@ class Teamstats extends React.Component {
       let totalResist = 0;
       let totalWeak = 0;
       let rowInfo = pokemonTeam.map((pokemon) => {
-        const individualDef = this.calcResistance(pokemon.types, damageType);
-        individualDef < 1
-          ? totalWeak++
-          : individualDef > 1
-          ? totalResist++
-          : (totalResist += 0);
-        let rowData = <td>{individualDef}</td>;
+        let className;
+        let individualDef = this.calcResistance(pokemon.types, damageType);
+        if (individualDef < 1) {
+          className = 'weak';
+          totalWeak++;
+        } else if (individualDef > 1) {
+          className = 'strong';
+          totalResist++;
+        } else {
+          individualDef = '';
+        }
+        let rowData = <td className={className}>{individualDef}</td>;
         return rowData;
       });
 
       let row = (
         <tr>
-          <th className={`type ${damageType}`}>{damageType}</th>
+          <td className={`table-types ${damageType}`}>{damageType}</td>
           {rowInfo}
           <td>{totalResist}</td>
           <td>{totalWeak}</td>
@@ -57,8 +66,8 @@ class Teamstats extends React.Component {
         <tr>
           <th>Pokemon</th>
           {header}
-          <td>Team Resistance</td>
-          <td>Team Weakness</td>
+          <th>Team Resistance</th>
+          <th>Team Weakness</th>
         </tr>
         {tableBody}
       </tbody>
