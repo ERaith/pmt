@@ -117,7 +117,6 @@ class Team extends React.Component {
 
   createRoute = (path, teamName) => {
     let pathName = path.split('/team/').shift();
-    console.log(pathName);
     return pathName + '/team/' + teamName;
   };
 
