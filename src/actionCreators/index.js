@@ -8,9 +8,13 @@ export const filterPokemon = (pokemon) => ({
   pokemon,
 });
 
-export const addPokemonToTeam = (pokemon) => ({
+export const addPokemonToTeam = (teamMember) => ({
   type: 'TEAM_LIST',
-  pokemon,
+  teamMember,
+});
+export const removePokemonFromTeam = (releasedPokemon) => ({
+  type: 'REMOVE_POKEMON',
+  releasedPokemon,
 });
 
 export const showDetails = (pokemonDetails) => ({

@@ -16,6 +16,7 @@ export const fetchPokemon = async () => {
         stats: cleanData.stats,
         types: cleanData.types,
         name: cleanData.name,
+        id: cleanData.id,
       };
       return cleanData;
     }),

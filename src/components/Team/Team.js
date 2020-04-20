@@ -16,7 +16,7 @@ export const Team = ({ pokemonTeam, details }) => {
       <article className="pokemon-mini-container">
         {pokemonTeam.map((pokemon) => {
           return (
-            <PokemonMini pokemon={pokemon} key={pokemon.id} whereami="Team" />
+            <PokemonMini pokemon={pokemon} key={pokemon.teamID} whereami="Team" />
           );
         })}
       </article>

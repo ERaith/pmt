@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addPokemonToTeam, showDetails } from '../../actionCreators/index';
+import { addPokemonToTeam,removePokemonFromTeam, showDetails } from '../../actionCreators/index';
 
 export const PokemonMini = ({
   whereami,
   pokemon,
   addPokemonToTeam,
+  removePokemonFromTeam,
   pokemonTeam,
   showDetails,
 }) => {
@@ -26,12 +27,18 @@ export const PokemonMini = ({
         showDetails(pokemon);
         break;
       case 'Pokedex':
-        pokemonTeam.length < 6 && addPokemonToTeam(pokemon);
+        let teamID = Math.floor(Math.random() * 100)
+        let pokemonTeamMember = {...pokemon,teamID:teamID}
+        pokemonTeam.length < 6 && addPokemonToTeam(pokemonTeamMember);
         break;
       default:
         break;
     }
   };
+
+  const deletePokemon = () =>{
+    removePokemonFromTeam(pokemon)
+  }
   const styling = (pokemon) => {
     let mainType;
     if (Array.isArray(pokemon.types)) {
@@ -70,8 +77,9 @@ export const PokemonMini = ({
               className="pokemon-image"
               src={pokemon.sprites.front_default}
               alt={`${pokemon.name}`}
-            />
+              />
           </span>
+              {whereami==='Team' &&<button onClick={() => deletePokemon()}>Delete</button>}
           <div>{type()}</div>
         </>
       )}
@@ -84,6 +92,6 @@ const mapStateToProps = ({ pokemonTeam }) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ addPokemonToTeam, showDetails }, dispatch);
+  bindActionCreators({ addPokemonToTeam, showDetails,removePokemonFromTeam }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonMini);
