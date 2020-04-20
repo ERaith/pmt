@@ -1,22 +1,22 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import Pokedex from '../Pokedex/Pokedex';
-import { filterPokemon, showDetails } from '../../actionCreators/index';
 import PokemonMini from '../PokemonMini/PokemonMini';
 
 export const Team = ({ pokemonTeam, details }) => {
   const renderPokemonTeam = () => {
-    let emptyNum = 6-pokemonTeam.length
-    let pokemonTeamDefault = new Array(emptyNum);
-    pokemonTeamDefault.fill({name:'placeholder'})    
-    pokemonTeam = pokemonTeam.concat(pokemonTeamDefault)
+    const emptySlots = 6 - pokemonTeam.length;
+    const pokemonTeamDefault = new Array(emptySlots);
+    pokemonTeamDefault.fill({ name: 'placeholder' });
+    pokemonTeam = pokemonTeam.concat(pokemonTeamDefault);
     return (
       <article className="pokemon-mini-container">
         {pokemonTeam.map((pokemon) => {
           return (
-            <PokemonMini pokemon={pokemon} key={pokemon.teamID} whereami="Team" />
+            <PokemonMini
+              pokemon={pokemon}
+              key={pokemon.teamID}
+              whereami="Team"
+            />
           );
         })}
       </article>
@@ -26,21 +26,24 @@ export const Team = ({ pokemonTeam, details }) => {
     <section className="team-view-container">
       <h2>TEAM</h2>
       {renderPokemonTeam()}
-      {details.show && (
-        <aside className="pokemon-details">
-          <div>Name: {details.details.name}</div>
-          <div>
-            Type:
-            {details.details.types.map((slot) => (
-              <div key={slot.type.name} className={`type ${slot.type.name}`}>
-                {slot.type.name}
-              </div>
-            ))}
-          </div>
-          <div>Weakness:In Progress</div>
-          <div>Moves:In Progress</div>
-        </aside>
-      )}
+      {details.show &&
+        pokemonTeam.find(
+          (element) => element.teamID === details.details.teamID,
+        ) && (
+          <aside className="pokemon-details">
+            <div>Name: {details.details.name}</div>
+            <div>
+              Type:
+              {details.details.types.map((slot) => (
+                <div key={slot.type.name} className={`type ${slot.type.name}`}>
+                  {slot.type.name}
+                </div>
+              ))}
+            </div>
+            <div>Weakness:In Progress</div>
+            <div>Moves:In Progress</div>
+          </aside>
+        )}
     </section>
   );
 };
@@ -50,7 +53,4 @@ const mapStateToProps = ({ pokemonTeam, details }) => ({
   details,
 });
 
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ filterPokemon }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Team);
+export default connect(mapStateToProps, undefined)(Team);
