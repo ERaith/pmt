@@ -80,9 +80,9 @@ export const PokemonMini = ({
               />
           </span>
           <div>{type()}</div>
-              {whereami==='Team' &&<button className ='delete' onClick={() => deletePokemon()}>	Release </button>}
         </>
       )}
+      {whereami==='Team' &&<button className ='delete' onClick={() => deletePokemon()}>	Release </button>}
     </div>
   );
 };

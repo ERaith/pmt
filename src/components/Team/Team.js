@@ -25,6 +25,7 @@ export const Team = ({ pokemonTeam, details }) => {
   return (
     <section className="team-view-container">
       <h2>TEAM</h2>
+      <button>Save Team</button>
       {renderPokemonTeam()}
       {details.show &&
         pokemonTeam.find(

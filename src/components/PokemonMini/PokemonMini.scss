@@ -6,7 +6,7 @@
   width: 9rem;
   height: 9rem;
   align-items: center;
-	margin: 8px;
+	margin: 1rem;
 	background-color: $secondary_background_color;
   box-shadow: 5px 5px 5px black;
   &.Pokedex{
@@ -22,8 +22,6 @@
       margin-bottom: -1rem;
 			&:hover {
 				animation: bounce 0.5s infinite;
-				
-        
 			}
 		}
 		&.placeholder-image{
