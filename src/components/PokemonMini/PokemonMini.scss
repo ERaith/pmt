@@ -1,153 +1,102 @@
-.pokemon-mini{
-  border-radius: 1rem;
-  border:black .1rem solid;
-  display:inline-block;
-  &:hover {
-
-  }
+.pokemon-mini {
+  border-radius: 3rem;
+  display: inline-block;
   display: flex;
   flex-direction: column;
-  width:9rem;
-  height:9rem;
-	align-items: center;
-	box-shadow: 5px 5px 5px rgba(8, 112, 184, 0.7);
-	margin: 8px;
-	img{
-		&:hover {
-			animation: bounce .5s infinite;
-			background-image: url('/images/pokeball_hover.png');
-			background-repeat: no-repeat;
-			background-position: center;
+  width: 9rem;
+  height: 9rem;
+  align-items: center;
+  margin: 8px;
+	box-shadow: 5px 5px 5px black;
+  img {
+		&.pokemon-image{
+			&:hover {
+				animation: bounce 0.5s infinite;
+				background-image: url('/images/pokeball_hover.png');
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+			}
 		}
-	}
+		&.placeholder-image{
+			width: 10rem;
+		}
+  }
+  @each $color-key, $color-value in $types {
+    @each $tone-key, $tone-value in $color-value {
+      @if $tone-key == light {
+        &.#{$color-key} {
+          box-shadow: 3px 3px 3px $tone-value;
+        }
+      } @else {
+        &.#{$color-key} {
+          border: 2px solid $tone-value;
+        }
+      }
+    }
+  }
 }
 
 @keyframes bounce {
-	0%, 50%, 100% {
-		-webkit-transform: translateY(0);
-		transform: translateY(0);
-	}
+  0%,
+  50%,
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
 
-	50% {
-		-webkit-transform: translateY(-5px);
-		transform: translateY(-5px);
-	}
-
+  50% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
 }
 
 .type {
-	margin: 5px;
-	padding: 5px 8px 5px 8px;
-	display: inline-block;
-	border-radius: 6px;
-	-webkit-border-radius: 6px; 
-	-moz-border-radius: 6px;
-	-o-border-radius: 6px;
-	font-size: 13px;
-	font-family: "helvetica neue", Helvetica, Verdana, sans-serif;
-	color: #FFF;
-	background-color: #68A090;
-	border: 1px solid #44685E;
-}
+  margin: 2px;
+  padding: 5px 8px 5px 8px;
+  display: inline-block;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -o-border-radius: 6px;
+  font-size: 13px;
+  font-family: 'helvetica neue', Helvetica, Verdana, sans-serif;
+  color: #fff;
+  background-color: #68a090;
+  border: 1px solid #44685e;
 
-.normal {
-	background-color: #A8A878;
-	border: 1px solid #6D6D4E;
-}
-
-.fire {
-	background-color: #F08030;
-	border: 1px solid #9C531F;
-}
-
-.water {
-	background-color: #6890F0;
-	border: 1px solid #445E9C;
-}
-
-.electric {
-	background-color: #F8D030;
-	border: 1px solid #A1871F;
-}
-
-.grass {
-	background-color: #78C850;
-	border: 1px solid #4E8234;
-}
-
-.ice {
-	background-color: #98D8D8;
-	border: 1px solid #638D8D;
-}
-
-.ground {
-	background-color: #E0C068;
-	border: 1px solid #927D44;
-}
-
-.flying {
-	background-color: #A890F0;
-	border: 1px solid #6D5E9C;
-}
-
-.ghost {
-	background-color: #705898;
-	border: 1px solid #493963;
-}
-
-.rock {
-	background-color: #B8A038;
-	border: 1px solid #786824;
-}
-
-.fighting {
-	background-color: #C03028;
-	border: 1px solid #7D1F1A;
-}
-
-.poison {
-	background-color: #A040A0;
-	border: 1px solid #682A68;
-}
-
-.psychic {
-	background-color: #F85888;
-	border: 1px solid #A13959;
-}
-
-.bug {
-	background-color: #A8B820;
-	border: 1px solid #6D7815;
-}
-
-.dark {
-	background-color: #705848;
-	border: 1px solid #49392F;
-}
-
-.steel {
-	background-color: #B8B8D0;
-	border: 1px solid #787887;
-}
-
-.dragon {
-	background-color: #7038F8;
-	border: 1px solid #4924A1;
+  &.normal {
+    background-color: #a8a878;
+    border: 1px solid #6d6d4e;
+  }
+  @each $color-key, $color-value in $types {
+    @each $tone-key, $tone-value in $color-value {
+      @if $tone-key == light {
+        &.#{$color-key} {
+          background-color: $tone-value;
+        }
+      } @else {
+        &.#{$color-key} {
+          border: 1px solid $tone-value;
+        }
+      }
+    }
+  }
 }
 
 // Variables
-$prefix:          tooltip;
-$contentAttr:    data-tooltip;
-$trigger:        data-trigger;
-$placement:      data-placement;
-$black:          #000;
-$white:          #fff;
+$prefix: tooltip;
+$contentAttr: data-tooltip;
+$trigger: data-trigger;
+$placement: data-placement;
+$black: #000;
+$white: #fff;
 
 // The main tooltip class
 .#{$prefix} {
   outline: none;
   position: relative;
-	
+
   // Hide the tooltip when not active
   &:after,
   &:before {
@@ -156,7 +105,7 @@ $white:          #fff;
     outline: none;
     position: absolute;
     text-decoration: none;
-    transition: opacity .3s linear 0s;
+    transition: opacity 0.3s linear 0s;
     visibility: hidden;
   }
 
@@ -169,30 +118,30 @@ $white:          #fff;
     white-space: nowrap;
   }
 
-// Tooltip trigger
-  &[#{$trigger}="hover"]:hover:before,
-  &[#{$trigger}="hover"]:hover:after, {
+  // Tooltip trigger
+  &[#{$trigger}='hover']:hover:before,
+  &[#{$trigger}='hover']:hover:after {
     opacity: 1;
-    transition: opacity .3s linear 0s;
+    transition: opacity 0.3s linear 0s;
     visibility: visible;
     z-index: 2;
   }
 
   // Tooltip placement top
-  &[#{$placement}="top"]:after,
-  &[#{$placement}="top"]:before {
+  &[#{$placement}='top']:after,
+  &[#{$placement}='top']:before {
     bottom: 60%;
   }
-	
-  &[#{$placement}="top"]:after {
+
+  &[#{$placement}='top']:after {
     border-radius: 4px;
     left: 00%;
     margin: 0 0 14px 0;
     // transform: translate(50%);
   }
-	
-  &[#{$placement}="top"]:before {
-    content: "";
+
+  &[#{$placement}='top']:before {
+    content: '';
     border-right: 8px solid transparent;
     border-left: 8px solid transparent;
     border-top: 8px solid black;

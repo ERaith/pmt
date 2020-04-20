@@ -1,4 +1,75 @@
-$main_background_color:#222222;
-$pokemon-red:#CC0000;
-$pokemon-blue:#3d3c3c;
-$pokemon-yellow:#FFDE00;
+$main_background_color: #222222;
+$pokemon-red: #cc0000;
+$pokemon-blue: #3b4cca;
+$pokemon-yellow: #ffde00;
+
+$types: (
+  normal: (
+    light: #a8a878,
+    dark: #6d6d4e,
+  ),
+  fire: (
+    light: #f08030,
+    dark: #9c531f,
+  ),
+  water: (
+    light: #6890f0,
+    dark: #445e9c,
+  ),
+  electric: (
+    light: #f8d030,
+    dark: #a1871f,
+  ),
+  grass: (
+    light: #78c850,
+    dark: #4e8234,
+  ),
+  ice: (
+    light: #98d8d8,
+    dark: #638d8d,
+  ),
+  ground: (
+    light: #e0c068,
+    dark: #927d44,
+  ),
+  flying: (
+    light: #a890f0,
+    dark: #6d5e9c,
+  ),
+  ghost: (
+    light: #705898,
+    dark: #493963,
+  ),
+  rock: (
+    light: #b8a038,
+    dark: #786824,
+  ),
+  fighting: (
+    light: #c03028,
+    dark: #7d1f1a,
+  ),
+  poison: (
+    light: #a040a0,
+    dark: #682a68,
+  ),
+  psychic: (
+    light: #f85888,
+    dark: #a13959,
+  ),
+  bug: (
+    light: #a8b820,
+    dark: #6d7815,
+  ),
+  dark: (
+    light: #705848,
+    dark: #49392f,
+  ),
+  steel: (
+    light: #b8b8d0,
+    dark: #787887,
+  ),
+  dragon: (
+    light: #7038f8,
+    dark: #4924a1,
+  ),
+);

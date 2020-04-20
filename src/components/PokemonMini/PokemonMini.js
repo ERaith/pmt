@@ -32,28 +32,49 @@ export const PokemonMini = ({
         break;
     }
   };
+  const styling = (pokemon) => {
+    let mainType;
+    if (Array.isArray(pokemon.types)) {
+      mainType = pokemon.types[0].type.name;
+      return `pokemon-mini ${mainType}`;
+    } else {
+      return `pokemon-mini`;
+    }
+  };
 
   return (
-    <div className="pokemon-mini">
-      {pokemon.name==='placeholder'?
-      <span>Choose Your Pokemon</span>
-    :<>
-      <span
-        className="tooltip"
-        data-tooltip={pokemon.name}
-        data-placement="top"
-        data-trigger="hover"
-        onClick={() => handlePokemon()}
-      >
-        <img
-          className="pokemon-image"
-          src={pokemon.sprites.front_default}
-          alt={`${pokemon.name}`}
-        />
-      </span>
-      <div>{type()}</div>
-    </>
-    }
+    <div className={styling(pokemon)}>
+      {pokemon.name === 'placeholder' ? (
+        <span
+          className="tooltip"
+          data-tooltip="Choose a Pokemon!"
+          data-placement="top"
+          data-trigger="hover"
+        >
+          <img
+            className="placeholder-image"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/201.png"
+            alt={`No Pokemon Yet`}
+          />
+        </span>
+      ) : (
+        <>
+          <span
+            className="tooltip"
+            data-tooltip={pokemon.name}
+            data-placement="top"
+            data-trigger="hover"
+            onClick={() => handlePokemon()}
+          >
+            <img
+              className="pokemon-image"
+              src={pokemon.sprites.front_default}
+              alt={`${pokemon.name}`}
+            />
+          </span>
+          <div>{type()}</div>
+        </>
+      )}
     </div>
   );
 };
@@ -63,6 +84,6 @@ const mapStateToProps = ({ pokemonTeam }) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ addPokemonToTeam,showDetails }, dispatch);
+  bindActionCreators({ addPokemonToTeam, showDetails }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonMini);

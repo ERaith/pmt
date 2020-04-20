@@ -4,9 +4,10 @@
   display: flex;
   align-items: center;
   padding-left: 10rem;
+  margin-bottom: 1rem;
   h1 {
     font-size: 4rem;
-    color:$pokemon-blue;
+    color: $pokemon-blue;
     text-shadow: -3px -3px 0 $pokemon-yellow, 3px -3px 0 $pokemon-yellow, -3px 3px 0 $pokemon-yellow, 3px 3px 0 $pokemon-yellow;
   }
 }
