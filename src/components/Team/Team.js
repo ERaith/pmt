@@ -78,12 +78,14 @@ class Team extends React.Component {
         </div>
         <button
           className="save-team"
+          aria-label="Save Team"
           onClick={(event) => this.handleSubmit(event)}
         >
           Save Team
         </button>
         <button
           className="delete-team"
+          aria-label="Delete Team"
           onClick={(event) => this.handleRemove(event)}
         >
           Delete Team
@@ -122,7 +124,7 @@ class Team extends React.Component {
   showTeams = () => {
     return (
       <div className="Teams">
-        <h2>Teams:</h2>
+        {this.props.savedTeams!=undefined&&this.props.savedTeams.length!=0&&<h2>Teams:</h2>}
 
         {this.props.savedTeams.map((team) => {
           return (
@@ -132,6 +134,8 @@ class Team extends React.Component {
               className="nav-link team"
               isActive={(match) => match}
               onClick={() => this.handleGoTo(team)}
+              key = {team.teamName}
+              aria-label = {team.teamName}
             >
               {team.teamName}
             </NavLink>
