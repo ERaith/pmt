@@ -24,7 +24,7 @@ class Team extends React.Component {
           return (
             <PokemonMini
               pokemon={pokemon}
-              key={pokemon.teamID}
+              key={pokemon.teamID || Math.random()}
               whereami="Team"
             />
           );

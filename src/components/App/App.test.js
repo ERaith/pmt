@@ -3,8 +3,9 @@ import { render, waitFor, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { rootReducer } from '../../reducers/index';
-import { mockPokemonList } from '../../../public/mockTestFiles';
-import { fetchPokemon } from '../../apiCalls/apiCalls';
+import { mockPokemonList,mockTypes } from '../../../public/mockTestFiles';
+import { fetchPokemon,fetchTypes } from '../../apiCalls/apiCalls';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
 jest.mock('../../apiCalls/apiCalls');
@@ -15,10 +16,13 @@ describe('Pokedex Tests', () => {
   beforeEach(() => {
     fetchPokemon.mockResolvedValue(mockPokemonList);
     store = createStore(rootReducer);
+    fetchTypes.mockResolvedValue(mockTypes)
     testWrapper = (
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
     );
   });
   it('renders the pokedex', async () => {

@@ -23,7 +23,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <body>
+      <main>
         <Route
           exact
           path="/"
@@ -47,7 +47,7 @@ class App extends React.Component {
             <Pokedex />
           </Route>
         </section>
-      </body>
+      </main>
     );
   }
 }
