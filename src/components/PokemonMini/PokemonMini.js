@@ -43,9 +43,9 @@ export const PokemonMini = ({
     let mainType;
     if (Array.isArray(pokemon.types)) {
       mainType = pokemon.types[0].type.name;
-      return `pokemon-mini ${mainType}`;
+      return `pokemon-mini ${whereami} ${mainType}`;
     } else {
-      return `pokemon-mini`;
+      return `pokemon-mini ${whereami}`;
     }
   };
 
@@ -79,8 +79,8 @@ export const PokemonMini = ({
               alt={`${pokemon.name}`}
               />
           </span>
-              {whereami==='Team' &&<button onClick={() => deletePokemon()}>Delete</button>}
           <div>{type()}</div>
+              {whereami==='Team' &&<button className ='delete' onClick={() => deletePokemon()}>	Release </button>}
         </>
       )}
     </div>

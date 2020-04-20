@@ -8,19 +8,26 @@
   align-items: center;
 	margin: 8px;
 	background-color: $secondary_background_color;
-	box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px black;
+  &.Pokedex{
+    &:hover{
+      background-image: url('/images/pokeball_hover.png');
+      background-repeat: no-repeat;
+      background-size: 6rem ;
+      background-position:45% 0%;  
+    }
+  }
   img {
 		&.pokemon-image{
+      margin-bottom: -1rem;
 			&:hover {
 				animation: bounce 0.5s infinite;
-				background-image: url('/images/pokeball_hover.png');
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-position: center;
+				
+        
 			}
 		}
 		&.placeholder-image{
-			width: 10rem;
+      width: 10rem;
 		}
   }
   @each $color-key, $color-value in $types {
@@ -50,6 +57,13 @@
     -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
   }
+}
+.delete{
+  background-color: red;
+  color:white;
+  border-radius: .25rem;
+  height:2rem;
+  margin-top: .25rem;
 }
 
 .type {
@@ -115,7 +129,6 @@ $white: #fff;
     content: attr(#{$contentAttr});
     background-color: $black;
     color: $white;
-    padding: 6px;
     white-space: nowrap;
   }
 
@@ -151,3 +164,5 @@ $white: #fff;
     transform: translate(50%);
   }
 }
+
+
