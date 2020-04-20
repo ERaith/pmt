@@ -32,8 +32,8 @@ class Pokedex extends React.Component {
 
   render() {
     return (
-      <section>
-        <Searchbar />
+      <section className ="pokedex">
+        <Searchbar className ="searchbar" />
         <article className="pokemon-mini-container">
           {this.renderPokemon()}
         </article>

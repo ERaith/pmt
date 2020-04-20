@@ -43,14 +43,12 @@ class Searchbar extends React.Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-  };
+
 
   render() {
     const { name, type } = this.state;
     return (
-      <form aria-label="Login Form">
+      <form aria-label="pokemon search form">
         <div className="form_group">
           <input
             className="form_field"

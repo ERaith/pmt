@@ -1,9 +1,33 @@
-.team-view-container{
-  display:flex;
+.team-view-container {
+  display: flex;
   flex-direction: column;
+  margin-bottom: 2rem;
+  color: white;
+  .child {
+    flex: 1 0 21%;
+  }
 }
 
-.pokemon-details{
-  background-color: grey;
-  padding:2rem;
+.pokemon-details {
+  background-color: $pokemon_red;
+  padding: 2rem;
+  margin-top: 2rem;
+  border: $pokemon_dark_red solid 0.5rem;
+}
+
+.save-team {
+  @include button();
+}
+.delete-team {
+  @include button();
+}
+
+.team {
+  align-self: flex-start;
+}
+
+.team-form {
+  align-self: baseline;
+  display: flex;
+  flex-direction: row;
 }

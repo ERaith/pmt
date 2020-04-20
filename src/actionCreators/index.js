@@ -8,12 +8,37 @@ export const filterPokemon = (pokemon) => ({
   pokemon,
 });
 
-export const addPokemonToTeam = (pokemon) => ({
+export const addPokemonToTeam = (teamMember) => ({
   type: 'TEAM_LIST',
-  pokemon,
+  teamMember,
+});
+export const removePokemonFromTeam = (releasedPokemon) => ({
+  type: 'REMOVE_POKEMON',
+  releasedPokemon,
 });
 
 export const showDetails = (pokemonDetails) => ({
   type: 'SHOW_DETAILS',
   pokemonDetails,
+});
+
+export const loadTypes = (typeDetails) => ({
+  type: 'LOAD_TYPES',
+  typeDetails,
+});
+
+export const saveTeam = (pokemonTeam,teamName) => ({
+  type: 'SAVE_TEAM',
+  pokemonTeam,
+  teamName
+});
+
+export const removeTeam = (teamName) => ({
+  type: 'REMOVE_TEAM',
+  teamName
+});
+
+export const goToTeam = (loadedTeam) => ({
+  type: 'GOTO_TEAM',
+  loadedTeam
 });
