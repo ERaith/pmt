@@ -24,6 +24,8 @@ export const PokemonMini = ({
   const handlePokemon = () => {
     switch (whereami) {
       case 'Team':
+        console.log(pokemon);
+        
         showDetails(pokemon);
         break;
       case 'Pokedex':

@@ -6,6 +6,8 @@ const pokemonTeam = (state = defaultState, action) => {
     case 'REMOVE_POKEMON':
       let updatedState = state.filter(element=>element.teamID !== action.releasedPokemon.teamID)
       return updatedState;
+    case 'GOTO_TEAM':
+      return action.loadedTeam;
     default:
       return state;
   }

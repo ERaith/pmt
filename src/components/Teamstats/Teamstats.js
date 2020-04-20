@@ -1,16 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { loadTypes } from '../../actionCreators/index';
-import { fetchTypes } from '../../apiCalls/apiCalls';
 
 class Teamstats extends React.Component {
-  getStats = async () => {
-    const { loadTypes } = this.props;
-    let stats = await fetchTypes();
-    loadTypes(stats);
-  };
 
   calcResistance = (types, damageType) => {
     const { typeDetails } = this.props;
@@ -32,17 +24,17 @@ class Teamstats extends React.Component {
     });
     let tableBody = Object.keys(typeDetails);
     tableBody = tableBody.map((damageType) => {
-      let totalResist = 0;
       let totalWeak = 0;
+      let totalResistant = 0;
       let rowInfo = pokemonTeam.map((pokemon) => {
         let className;
         let individualDef = this.calcResistance(pokemon.types, damageType);
         if (individualDef < 1) {
+          className = 'strong';
+          totalResistant++;
+        } else if (individualDef > 1) {
           className = 'weak';
           totalWeak++;
-        } else if (individualDef > 1) {
-          className = 'strong';
-          totalResist++;
         } else {
           individualDef = '';
         }
@@ -54,8 +46,8 @@ class Teamstats extends React.Component {
         <tr>
           <td className={`table-types ${damageType}`}>{damageType}</td>
           {rowInfo}
-          <td>{totalResist}</td>
           <td>{totalWeak}</td>
+          <td>{totalResistant}</td>
         </tr>
       );
       return row;
@@ -66,17 +58,15 @@ class Teamstats extends React.Component {
         <tr>
           <th>Pokemon</th>
           {header}
-          <th>Team Resistance</th>
           <th>Team Weakness</th>
+          <th>Team Resistance</th>
         </tr>
         {tableBody}
       </tbody>
     );
   };
 
-  componentDidMount = () => {
-    this.getStats();
-  };
+
 
   render() {
     return (
@@ -93,7 +83,4 @@ const mapStateToProps = ({ pokemonTeam, typeDetails }) => ({
   typeDetails,
 });
 
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ loadTypes }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Teamstats);
+export default connect(mapStateToProps, undefined)(Teamstats);

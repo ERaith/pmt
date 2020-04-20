@@ -2,11 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Navbar = () => {
+const Navbar = ({path}) => {
+  const createRoute = (path,details) => {
+    let teamName = path.split('/team/').pop()
+    return details + '/team/' +teamName
+  }
   return (
     <div className="navbar">
       <NavLink
-        to="/team-stats"
+        to={createRoute(path,'/team-stats')}
         activeClassName="active"
         className="nav-link"
         isActive={(match) => match}
@@ -14,7 +18,7 @@ const Navbar = () => {
         Team Stats
       </NavLink>
       <NavLink
-        to="/pokedex"
+        to={createRoute(path,'/pokedex')}
         activeClassName="active"
         className="nav-link"
         isActive={(match) => match}
