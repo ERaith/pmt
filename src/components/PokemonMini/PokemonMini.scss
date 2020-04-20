@@ -6,7 +6,8 @@
   width: 9rem;
   height: 9rem;
   align-items: center;
-  margin: 8px;
+	margin: 8px;
+	background-color: $secondary_background_color;
 	box-shadow: 5px 5px 5px black;
   img {
 		&.pokemon-image{

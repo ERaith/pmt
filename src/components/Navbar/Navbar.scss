@@ -1,6 +1,7 @@
 .navbar {
   border-top: solid 0.2rem $pokemon-red;
   display: flex;
+  justify-content: center;
 }
 .nav-link {
   background-color: transparent;

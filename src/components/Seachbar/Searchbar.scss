@@ -4,23 +4,27 @@ $white: #fff;
 $gray: #9b9b9b;
 form {
   display: flex;
+  margin-bottom: 2rem;
+  justify-content: center;
 }
 
 .form_group {
   position: relative;
   padding: 15px 0 0;
   margin-top: 10px;
-  width: 30%;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  width: 15%;
   display: inline;
 }
 
 .form_field {
   position: relative;
   font-family: inherit;
-  width: 50%;
   border: 0;
   border-bottom: 2px solid $gray;
   outline: 0;
+  width:100%;
   font-size: 1.3rem;
   color: $white;
   padding: 7px 0;

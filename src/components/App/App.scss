@@ -1,3 +1,7 @@
 .app{
   background-color: $main_background_color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }

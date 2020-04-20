@@ -9,8 +9,9 @@ import { Header } from '../Header/Header';
 class App extends React.Component {
   render() {
     return (
-      <section className="app">
+      <body>
         <Header />
+        <section className = "app">
         <Team />
         <Route path="/">
           <Navbar />
@@ -21,7 +22,8 @@ class App extends React.Component {
         <Route path="/pokedex">
           <Pokedex />
         </Route>
-      </section>
+        </section>
+      </body>
     );
   }
 }
