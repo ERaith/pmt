@@ -16,7 +16,15 @@ This project is a pokemon builder! The app allows the user to choose which pokem
 
 ## Screenshots
 ![Homepage](https://user-images.githubusercontent.com/6379500/79816825-5b886600-8341-11ea-9eed-3ccb48d771dd.png)
+<details><summary>More Screenshots</summary>
+<p>
+  
+##### Team Stats
+![Home](https://user-images.githubusercontent.com/6379500/79817307-698ab680-8342-11ea-831e-76c4eb657e5d.png)
 
+
+</p>
+</details>
 ---
 
 ## Technologies Used
