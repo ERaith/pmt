@@ -4,9 +4,7 @@ import mockPokemonList from '../../public/mockTestFiles';
 describe('Reducer: filteredPokemon', () => {
   it('should return the initial state', () => {
     // Setup
-    const expected = {
-      filterPokemon: [],
-    };
+    const expected =[]
 
     // Execution
     const result = filteredPokemon(undefined, {});

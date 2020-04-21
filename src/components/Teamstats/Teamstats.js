@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Teamstats extends React.Component {
 
@@ -16,8 +16,8 @@ class Teamstats extends React.Component {
     const { typeDetails, pokemonTeam } = this.props;
     let header = pokemonTeam.map((pokemon) => {
       let headerElement = (
-        <th>
-          <img src={pokemon.sprites.front_default} />
+        <th key ={Math.random()}>
+          <img src={pokemon.sprites.front_default} alt ={pokemon.name} />
         </th>
       );
       return headerElement;
@@ -38,13 +38,13 @@ class Teamstats extends React.Component {
         } else {
           individualDef = '';
         }
-        let rowData = <td className={className}>{individualDef}</td>;
+        let rowData = <td className={className} key={Math.random()}>{individualDef}</td>;
         return rowData;
       });
 
       let row = (
-        <tr>
-          <td className={`table-types ${damageType}`}>{damageType}</td>
+        <tr key = {damageType}>
+          <td className={`table-types ${damageType}`} aria-label ={damageType}>{damageType}</td>
           {rowInfo}
           <td>{totalWeak}</td>
           <td>{totalResistant}</td>
@@ -66,8 +66,6 @@ class Teamstats extends React.Component {
     );
   };
 
-
-
   render() {
     return (
       <section className="team-stats-container">
@@ -84,3 +82,8 @@ const mapStateToProps = ({ pokemonTeam, typeDetails }) => ({
 });
 
 export default connect(mapStateToProps, undefined)(Teamstats);
+
+Teamstats.propTypes = {
+  pokemonTeam:PropTypes.array,
+  typeDetails:PropTypes.object
+};

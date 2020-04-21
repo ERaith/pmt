@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addPokemonToTeam,removePokemonFromTeam, showDetails } from '../../actionCreators/index';
+import {
+  addPokemonToTeam,
+  removePokemonFromTeam,
+  showDetails,
+} from '../../actionCreators/index';
 
 export const PokemonMini = ({
   whereami,
@@ -24,13 +28,11 @@ export const PokemonMini = ({
   const handlePokemon = () => {
     switch (whereami) {
       case 'Team':
-        console.log(pokemon);
-        
         showDetails(pokemon);
         break;
       case 'Pokedex':
-        let teamID = Math.floor(Math.random() * 100)
-        let pokemonTeamMember = {...pokemon,teamID:teamID}
+        let teamID = Math.floor(Math.random() * 100);
+        let pokemonTeamMember = { ...pokemon, teamID: teamID };
         pokemonTeam.length < 6 && addPokemonToTeam(pokemonTeamMember);
         break;
       default:
@@ -38,9 +40,9 @@ export const PokemonMini = ({
     }
   };
 
-  const deletePokemon = () =>{
-    removePokemonFromTeam(pokemon)
-  }
+  const deletePokemon = () => {
+    removePokemonFromTeam(pokemon);
+  };
   const styling = (pokemon) => {
     let mainType;
     if (Array.isArray(pokemon.types)) {
@@ -52,7 +54,7 @@ export const PokemonMini = ({
   };
 
   return (
-    <div className={styling(pokemon)}>
+    <div className={styling(pokemon)} aria-label ={whereami+" " + pokemon.name}>
       {pokemon.name === 'placeholder' ? (
         <span
           className="tooltip"
@@ -79,12 +81,16 @@ export const PokemonMini = ({
               className="pokemon-image"
               src={pokemon.sprites.front_default}
               alt={`${pokemon.name}`}
-              />
+            />
           </span>
           <div>{type()}</div>
         </>
       )}
-      {whereami==='Team' &&<button className ='delete' onClick={() => deletePokemon()}>	Release </button>}
+      {whereami === 'Team' && (
+        <button className="delete" aria-label = {pokemon.name + " Release"}onClick={() => deletePokemon()}>
+          Release
+        </button>
+      )}
     </div>
   );
 };
@@ -94,6 +100,16 @@ const mapStateToProps = ({ pokemonTeam }) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ addPokemonToTeam, showDetails,removePokemonFromTeam }, dispatch);
+  bindActionCreators(
+    { addPokemonToTeam, showDetails, removePokemonFromTeam },
+    dispatch,
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonMini);
+
+PokemonMini.propTypes = {
+  pokemonTeam:PropTypes.array,
+  addPokemonToTeam:PropTypes.func,
+  showDetails:PropTypes.func,
+  removePokemonFromTeam:PropTypes.func,
+};

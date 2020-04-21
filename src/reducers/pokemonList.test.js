@@ -4,9 +4,7 @@ import mockPokemonList from '../../public/mockTestFiles';
 describe('Reducer: pokemonList', () => {
   it('should return the initial state', () => {
     // Setup
-    const expected = {
-      pokemonList: [],
-    };
+    const expected = []
 
     // Execution
     const result = pokemonList(undefined, {});

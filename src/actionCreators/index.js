@@ -27,18 +27,18 @@ export const loadTypes = (typeDetails) => ({
   typeDetails,
 });
 
-export const saveTeam = (pokemonTeam,teamName) => ({
+export const saveTeam = (pokemonTeam, teamName) => ({
   type: 'SAVE_TEAM',
   pokemonTeam,
-  teamName
+  teamName,
 });
 
 export const removeTeam = (teamName) => ({
   type: 'REMOVE_TEAM',
-  teamName
+  teamName,
 });
 
 export const goToTeam = (loadedTeam) => ({
   type: 'GOTO_TEAM',
-  loadedTeam
+  loadedTeam,
 });

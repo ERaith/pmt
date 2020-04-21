@@ -19158,4 +19158,573 @@ export const mockPokemonList = [
   },
 ];
 
-export const mockPokemon = mockPokemonList[0]
+
+
+export const mockTypes = {
+  normal: {
+    from: {
+      fighting: 2,
+      ghost: 0,
+    },
+    to: {
+      rock: 0.5,
+      steel: 0.5,
+      ghost: 0,
+    },
+  },
+  fighting: {
+    from: {
+      flying: 2,
+      psychic: 2,
+      fairy: 2,
+      rock: 0.5,
+      bug: 0.5,
+      dark: 0.5,
+    },
+    to: {
+      normal: 2,
+      rock: 2,
+      steel: 2,
+      ice: 2,
+      dark: 2,
+      flying: 0.5,
+      poison: 0.5,
+      bug: 0.5,
+      psychic: 0.5,
+      fairy: 0.5,
+      ghost: 0,
+    },
+  },
+  flying: {
+    from: {
+      rock: 2,
+      electric: 2,
+      ice: 2,
+      fighting: 0.5,
+      bug: 0.5,
+      grass: 0.5,
+      ground: 0,
+    },
+    to: {
+      fighting: 2,
+      bug: 2,
+      grass: 2,
+      rock: 0.5,
+      steel: 0.5,
+      electric: 0.5,
+    },
+  },
+  poison: {
+    from: {
+      ground: 2,
+      psychic: 2,
+      fighting: 0.5,
+      poison: 0.5,
+      bug: 0.5,
+      grass: 0.5,
+      fairy: 0.5,
+    },
+    to: {
+      grass: 2,
+      fairy: 2,
+      poison: 0.5,
+      ground: 0.5,
+      rock: 0.5,
+      ghost: 0.5,
+      steel: 0,
+    },
+  },
+  ground: {
+    from: {
+      water: 2,
+      grass: 2,
+      ice: 2,
+      poison: 0.5,
+      rock: 0.5,
+      electric: 0,
+    },
+    to: {
+      poison: 2,
+      rock: 2,
+      steel: 2,
+      fire: 2,
+      electric: 2,
+      bug: 0.5,
+      grass: 0.5,
+      flying: 0,
+    },
+  },
+  rock: {
+    from: {
+      fighting: 2,
+      ground: 2,
+      steel: 2,
+      water: 2,
+      grass: 2,
+      normal: 0.5,
+      flying: 0.5,
+      poison: 0.5,
+      fire: 0.5,
+    },
+    to: {
+      flying: 2,
+      bug: 2,
+      fire: 2,
+      ice: 2,
+      fighting: 0.5,
+      ground: 0.5,
+      steel: 0.5,
+    },
+  },
+  bug: {
+    from: {
+      flying: 2,
+      rock: 2,
+      fire: 2,
+      fighting: 0.5,
+      ground: 0.5,
+      grass: 0.5,
+    },
+    to: {
+      grass: 2,
+      psychic: 2,
+      dark: 2,
+      fighting: 0.5,
+      flying: 0.5,
+      poison: 0.5,
+      ghost: 0.5,
+      steel: 0.5,
+      fire: 0.5,
+      fairy: 0.5,
+    },
+  },
+  ghost: {
+    from: {
+      ghost: 2,
+      dark: 2,
+      poison: 0.5,
+      bug: 0.5,
+      normal: 0,
+      fighting: 0,
+    },
+    to: {
+      ghost: 2,
+      psychic: 2,
+      dark: 0.5,
+      normal: 0,
+    },
+  },
+  steel: {
+    from: {
+      fighting: 2,
+      ground: 2,
+      fire: 2,
+      normal: 0.5,
+      flying: 0.5,
+      rock: 0.5,
+      bug: 0.5,
+      steel: 0.5,
+      grass: 0.5,
+      psychic: 0.5,
+      ice: 0.5,
+      dragon: 0.5,
+      fairy: 0.5,
+      poison: 0,
+    },
+    to: {
+      rock: 2,
+      ice: 2,
+      fairy: 2,
+      steel: 0.5,
+      fire: 0.5,
+      water: 0.5,
+      electric: 0.5,
+    },
+  },
+  fire: {
+    from: {
+      ground: 2,
+      rock: 2,
+      water: 2,
+      bug: 0.5,
+      steel: 0.5,
+      fire: 0.5,
+      grass: 0.5,
+      ice: 0.5,
+      fairy: 0.5,
+    },
+    to: {
+      bug: 2,
+      steel: 2,
+      grass: 2,
+      ice: 2,
+      rock: 0.5,
+      fire: 0.5,
+      water: 0.5,
+      dragon: 0.5,
+    },
+  },
+  water: {
+    from: {
+      grass: 2,
+      electric: 2,
+      steel: 0.5,
+      fire: 0.5,
+      water: 0.5,
+      ice: 0.5,
+    },
+    to: {
+      ground: 2,
+      rock: 2,
+      fire: 2,
+      water: 0.5,
+      grass: 0.5,
+      dragon: 0.5,
+    },
+  },
+  grass: {
+    from: {
+      flying: 2,
+      poison: 2,
+      bug: 2,
+      fire: 2,
+      ice: 2,
+      ground: 0.5,
+      water: 0.5,
+      grass: 0.5,
+      electric: 0.5,
+    },
+    to: {
+      ground: 2,
+      rock: 2,
+      water: 2,
+      flying: 0.5,
+      poison: 0.5,
+      bug: 0.5,
+      steel: 0.5,
+      fire: 0.5,
+      grass: 0.5,
+      dragon: 0.5,
+    },
+  },
+  electric: {
+    from: {
+      ground: 2,
+      flying: 0.5,
+      steel: 0.5,
+      electric: 0.5,
+    },
+    to: {
+      flying: 2,
+      water: 2,
+      grass: 0.5,
+      electric: 0.5,
+      dragon: 0.5,
+      ground: 0,
+    },
+  },
+  psychic: {
+    from: {
+      bug: 2,
+      ghost: 2,
+      dark: 2,
+      fighting: 0.5,
+      psychic: 0.5,
+    },
+    to: {
+      fighting: 2,
+      poison: 2,
+      steel: 0.5,
+      psychic: 0.5,
+      dark: 0,
+    },
+  },
+  ice: {
+    from: {
+      fighting: 2,
+      rock: 2,
+      steel: 2,
+      fire: 2,
+      ice: 0.5,
+    },
+    to: {
+      flying: 2,
+      ground: 2,
+      grass: 2,
+      dragon: 2,
+      steel: 0.5,
+      fire: 0.5,
+      water: 0.5,
+      ice: 0.5,
+    },
+  },
+  dragon: {
+    from: {
+      ice: 2,
+      dragon: 2,
+      fairy: 2,
+      fire: 0.5,
+      water: 0.5,
+      grass: 0.5,
+      electric: 0.5,
+    },
+    to: {
+      dragon: 2,
+      steel: 0.5,
+      fairy: 0,
+    },
+  },
+  dark: {
+    from: {
+      fighting: 2,
+      bug: 2,
+      fairy: 2,
+      ghost: 0.5,
+      dark: 0.5,
+      psychic: 0,
+    },
+    to: {
+      ghost: 2,
+      psychic: 2,
+      fighting: 0.5,
+      dark: 0.5,
+      fairy: 0.5,
+    },
+  },
+  fairy: {
+    from: {
+      poison: 2,
+      steel: 2,
+      fighting: 0.5,
+      bug: 0.5,
+      dark: 0.5,
+      dragon: 0,
+    },
+    to: {
+      fighting: 2,
+      dragon: 2,
+      dark: 2,
+      poison: 0.5,
+      steel: 0.5,
+      fire: 0.5,
+    },
+  },
+  unknown: {
+    from: {},
+    to: {},
+  },
+  shadow: {
+    from: {},
+    to: {},
+  },
+};
+
+
+export const mocksavedTeams= [
+    {
+      teamName: 'Team Blue',
+      members: [
+        {
+          abilities: [
+            {
+              ability: {
+                name: 'chlorophyll',
+                url: 'https://pokeapi.co/api/v2/ability/34/'
+              },
+              is_hidden: true,
+              slot: 3
+            },
+            {
+              ability: {
+                name: 'overgrow',
+                url: 'https://pokeapi.co/api/v2/ability/65/'
+              },
+              is_hidden: false,
+              slot: 1
+            }
+          ],
+          sprites: {
+            back_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png',
+            back_female: null,
+            back_shiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/2.png',
+            back_shiny_female: null,
+            front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png',
+            front_female: null,
+            front_shiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/2.png',
+            front_shiny_female: null
+          },
+          stats: [
+            {
+              base_stat: 60,
+              effort: 0,
+              stat: {
+                name: 'speed',
+                url: 'https://pokeapi.co/api/v2/stat/6/'
+              }
+            },
+            {
+              base_stat: 80,
+              effort: 1,
+              stat: {
+                name: 'special-defense',
+                url: 'https://pokeapi.co/api/v2/stat/5/'
+              }
+            },
+            {
+              base_stat: 80,
+              effort: 1,
+              stat: {
+                name: 'special-attack',
+                url: 'https://pokeapi.co/api/v2/stat/4/'
+              }
+            },
+            {
+              base_stat: 63,
+              effort: 0,
+              stat: {
+                name: 'defense',
+                url: 'https://pokeapi.co/api/v2/stat/3/'
+              }
+            },
+            {
+              base_stat: 62,
+              effort: 0,
+              stat: {
+                name: 'attack',
+                url: 'https://pokeapi.co/api/v2/stat/2/'
+              }
+            },
+            {
+              base_stat: 60,
+              effort: 0,
+              stat: {
+                name: 'hp',
+                url: 'https://pokeapi.co/api/v2/stat/1/'
+              }
+            }
+          ],
+          types: [
+            {
+              slot: 2,
+              type: {
+                name: 'poison',
+                url: 'https://pokeapi.co/api/v2/type/4/'
+              }
+            },
+            {
+              slot: 1,
+              type: {
+                name: 'grass',
+                url: 'https://pokeapi.co/api/v2/type/12/'
+              }
+            }
+          ],
+          name: 'ivysaur',
+          id: 2,
+          teamID: 36
+        }
+      ]
+    },
+    {
+      teamName: 'Team Rocket',
+      members: [
+        {
+          abilities: [
+            {
+              ability: {
+                name: 'solar-power',
+                url: 'https://pokeapi.co/api/v2/ability/94/'
+              },
+              is_hidden: true,
+              slot: 3
+            },
+            {
+              ability: {
+                name: 'blaze',
+                url: 'https://pokeapi.co/api/v2/ability/66/'
+              },
+              is_hidden: false,
+              slot: 1
+            }
+          ],
+          sprites: {
+            back_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/4.png',
+            back_female: null,
+            back_shiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/4.png',
+            back_shiny_female: null,
+            front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png',
+            front_female: null,
+            front_shiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/4.png',
+            front_shiny_female: null
+          },
+          stats: [
+            {
+              base_stat: 65,
+              effort: 1,
+              stat: {
+                name: 'speed',
+                url: 'https://pokeapi.co/api/v2/stat/6/'
+              }
+            },
+            {
+              base_stat: 50,
+              effort: 0,
+              stat: {
+                name: 'special-defense',
+                url: 'https://pokeapi.co/api/v2/stat/5/'
+              }
+            },
+            {
+              base_stat: 60,
+              effort: 0,
+              stat: {
+                name: 'special-attack',
+                url: 'https://pokeapi.co/api/v2/stat/4/'
+              }
+            },
+            {
+              base_stat: 43,
+              effort: 0,
+              stat: {
+                name: 'defense',
+                url: 'https://pokeapi.co/api/v2/stat/3/'
+              }
+            },
+            {
+              base_stat: 52,
+              effort: 0,
+              stat: {
+                name: 'attack',
+                url: 'https://pokeapi.co/api/v2/stat/2/'
+              }
+            },
+            {
+              base_stat: 39,
+              effort: 0,
+              stat: {
+                name: 'hp',
+                url: 'https://pokeapi.co/api/v2/stat/1/'
+              }
+            }
+          ],
+          types: [
+            {
+              slot: 1,
+              type: {
+                name: 'fire',
+                url: 'https://pokeapi.co/api/v2/type/10/'
+              }
+            }
+          ],
+          name: 'charmander',
+          id: 4,
+          teamID: 82
+        }
+      ]
+    }
+  ]
+
+export const mockTeam = mocksavedTeams[0].members
+export const mockTeamOne = mocksavedTeams[0]
+export const mockTeamTwo = mocksavedTeams[1]
+export const mockPokemon = mockPokemonList[0];

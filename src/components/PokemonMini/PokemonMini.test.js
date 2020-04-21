@@ -1,16 +1,82 @@
 import React from 'react';
 import { render, waitFor, fireEvent } from '@testing-library/react';
-import PokemonMini from './PokemonMini';
-import { mockPokemon } from '../../../public/mockTestFiles';
+import { PokemonMini } from './PokemonMini';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { rootReducer } from '../../reducers/index';
+import { mockPokemon, mockPokemonList } from '../../../public/mockTestFiles';
 
-describe('Pokemon Mini Tests', () => {
+describe('Pokemon Mini Tests Pokedex', () => {
   // eslint-disable-next-line one-var
-  let testWrapper;
+  let testWrapper, mockAddToTeam;
   beforeEach(() => {
-    testWrapper = <PokemonMini pokemon={mockPokemon} />;
+    mockAddToTeam = jest.fn();
+    testWrapper = (
+      <PokemonMini
+        pokemon={mockPokemonList[0]}
+        whereami="Pokedex"
+        addPokemonToTeam={mockAddToTeam}
+        pokemonTeam={[]}
+      />
+    );
   });
-  it('renders the pokedex', () => {
-    const { getByAltText } = render(testWrapper);
+
+  it('renders a pokemon with stats', () => {
+    const { getByAltText, getByText, debug } = render(testWrapper);
     expect(getByAltText('bulbasaur')).toBeInTheDocument();
+    expect(getByText('poison')).toBeInTheDocument();
+    expect(getByText('grass')).toBeInTheDocument();
+  });
+  it('renders a pokemon with stats', () => {
+    const { getByAltText, getByText, debug } = render(testWrapper);
+    expect(getByAltText('bulbasaur')).toBeInTheDocument();
+    expect(getByText('poison')).toBeInTheDocument();
+    expect(getByText('grass')).toBeInTheDocument();
+    let bulbasaur = getByAltText('bulbasaur');
+    jest.spyOn(global.Math, 'random').mockImplementationOnce(() => 42);
+    fireEvent.click(bulbasaur);
+    let mockResults = mockPokemonList[0];
+    mockResults['teamID'] = 4200;
+    expect(mockAddToTeam).toBeCalledWith(mockResults);
+  });
+});
+
+describe('Pokemon Mini Tests Team', () => {
+  // eslint-disable-next-line one-var
+  let testWrapper, mockDelete, mockShow;
+  beforeEach(() => {
+    mockDelete = jest.fn();
+    mockShow = jest.fn();
+    testWrapper = (
+      <PokemonMini
+        pokemon={mockPokemonList[0]}
+        whereami="Team"
+        removePokemonFromTeam={mockDelete}
+        showDetails={mockShow}
+        pokemonTeam={[mockPokemonList[0]]}
+      />
+    );
+  });
+
+  it('renders a pokemon with stats', () => {
+    const { getByAltText, getByText, debug } = render(testWrapper);
+    expect(getByAltText('bulbasaur')).toBeInTheDocument();
+    expect(getByText('poison')).toBeInTheDocument();
+    expect(getByText('grass')).toBeInTheDocument();
+  });
+  it('will call showDetails', () => {
+    const { getByAltText, getByText, debug } = render(testWrapper);
+    expect(getByAltText('bulbasaur')).toBeInTheDocument();
+    let bulbasaur = getByAltText('bulbasaur');
+    fireEvent.click(bulbasaur);
+    expect(mockShow).toBeCalledWith(mockPokemonList[0]);
+  });
+  it('can call release', () => {
+    const { getByAltText, getByText, debug } = render(testWrapper);
+    expect(getByAltText('bulbasaur')).toBeInTheDocument();
+    expect(getByText('Release')).toBeInTheDocument();
+    let release = getByText('Release');
+    fireEvent.click(release);
+    expect(mockDelete).toBeCalledWith(mockPokemonList[0]);
   });
 });

@@ -5,6 +5,7 @@ import { fetchPokemon } from '../../apiCalls/apiCalls';
 import { loadPokemonList, filterPokemon } from '../../actionCreators/index';
 import PokemonMini from '../PokemonMini/PokemonMini';
 import Searchbar from '../Seachbar/Searchbar';
+import PropTypes from 'prop-types';
 
 class Pokedex extends React.Component {
   fetchPokemonList = async () => {
@@ -54,3 +55,10 @@ const mapDispatchToProps = (dispatch) =>
   );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokedex);
+
+Pokedex.propTypes = {
+  pokemonList:PropTypes.array,
+  filteredPokemon:PropTypes.array,
+  getPokemonList:PropTypes.func,
+  filterPokemon:PropTypes.func,
+};

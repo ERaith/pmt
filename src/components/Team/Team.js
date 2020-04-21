@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import PokemonMini from '../PokemonMini/PokemonMini';
 import { saveTeam, removeTeam, goToTeam } from '../../actionCreators/index';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Team extends React.Component {
   constructor() {
@@ -13,7 +14,7 @@ class Team extends React.Component {
     };
   }
   renderPokemonTeam = () => {
-    let { pokemonTeam, details, typeDetails } = this.props;
+    let { pokemonTeam } = this.props;
     const emptySlots = 6 - pokemonTeam.length;
     const pokemonTeamDefault = new Array(emptySlots);
     pokemonTeamDefault.fill({ name: 'placeholder' });
@@ -24,7 +25,7 @@ class Team extends React.Component {
           return (
             <PokemonMini
               pokemon={pokemon}
-              key={pokemon.teamID}
+              key={pokemon.teamID || Math.random()}
               whereami="Team"
             />
           );
@@ -34,7 +35,7 @@ class Team extends React.Component {
   };
 
   showResistances = (types, fromTo) => {
-    const { pokemonTeam, details, typeDetails } = this.props;
+    const { typeDetails } = this.props;
     return types.map((slot) => {
       let type = slot.type.name;
       let keys = Object.keys(typeDetails[type][fromTo]);
@@ -50,7 +51,7 @@ class Team extends React.Component {
   };
 
   showTypes = () => {
-    const { pokemonTeam, details, typeDetails } = this.props;
+    const { details } = this.props;
     return details.info.types.map((slot) => (
       <div key={slot.type.name} className={`type ${slot.type.name}`}>
         {slot.type.name}
@@ -78,12 +79,14 @@ class Team extends React.Component {
         </div>
         <button
           className="save-team"
+          aria-label="Save Team"
           onClick={(event) => this.handleSubmit(event)}
         >
           Save Team
         </button>
         <button
           className="delete-team"
+          aria-label="Delete Team"
           onClick={(event) => this.handleRemove(event)}
         >
           Delete Team
@@ -108,21 +111,21 @@ class Team extends React.Component {
   };
 
   handleGoTo = (team) => {
-    const { goToTeam, savedTeams } = this.props;
+    const { goToTeam } = this.props;
     this.handleChange(team.teamName);
     goToTeam(team.members);
   };
 
   createRoute = (path, teamName) => {
     let pathName = path.split('/team/').shift();
-    console.log(pathName);
     return pathName + '/team/' + teamName;
   };
 
   showTeams = () => {
     return (
       <div className="Teams">
-        <h2>Teams:</h2>
+        {this.props.savedTeams !== undefined &&
+          this.props.savedTeams.length !== 0 && <h2>Teams:</h2>}
 
         {this.props.savedTeams.map((team) => {
           return (
@@ -132,6 +135,8 @@ class Team extends React.Component {
               className="nav-link team"
               isActive={(match) => match}
               onClick={() => this.handleGoTo(team)}
+              key={team.teamName}
+              aria-label={team.teamName}
             >
               {team.teamName}
             </NavLink>
@@ -187,3 +192,13 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ saveTeam, removeTeam, goToTeam }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Team);
+
+Team.propTypes = {
+  pokemonTeam: PropTypes.array,
+  filtdetailseredPokemon: PropTypes.array,
+  typeDetails: PropTypes.object,
+  savedTeams: PropTypes.array,
+  saveTeam: PropTypes.func,
+  removeTeam: PropTypes.func,
+  goToTeam: PropTypes.func,
+};
