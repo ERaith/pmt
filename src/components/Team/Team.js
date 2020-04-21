@@ -13,7 +13,7 @@ class Team extends React.Component {
     };
   }
   renderPokemonTeam = () => {
-    let { pokemonTeam, details, typeDetails } = this.props;
+    let { pokemonTeam} = this.props;
     const emptySlots = 6 - pokemonTeam.length;
     const pokemonTeamDefault = new Array(emptySlots);
     pokemonTeamDefault.fill({ name: 'placeholder' });
@@ -34,7 +34,7 @@ class Team extends React.Component {
   };
 
   showResistances = (types, fromTo) => {
-    const { pokemonTeam, details, typeDetails } = this.props;
+    const { typeDetails } = this.props;
     return types.map((slot) => {
       let type = slot.type.name;
       let keys = Object.keys(typeDetails[type][fromTo]);
@@ -50,7 +50,7 @@ class Team extends React.Component {
   };
 
   showTypes = () => {
-    const { pokemonTeam, details, typeDetails } = this.props;
+    const { details } = this.props;
     return details.info.types.map((slot) => (
       <div key={slot.type.name} className={`type ${slot.type.name}`}>
         {slot.type.name}

@@ -54,7 +54,7 @@ export const PokemonMini = ({
   };
 
   return (
-    <div className={styling(pokemon)}>
+    <div className={styling(pokemon)} aria-label ={whereami+" " + pokemon.name}>
       {pokemon.name === 'placeholder' ? (
         <span
           className="tooltip"
@@ -87,9 +87,8 @@ export const PokemonMini = ({
         </>
       )}
       {whereami === 'Team' && (
-        <button className="delete" onClick={() => deletePokemon()}>
-          {' '}
-          Release{' '}
+        <button className="delete" aria-label = {pokemon.name + " Release"}onClick={() => deletePokemon()}>
+          Release
         </button>
       )}
     </div>
