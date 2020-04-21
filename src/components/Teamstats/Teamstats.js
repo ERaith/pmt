@@ -69,8 +69,10 @@ class Teamstats extends React.Component {
   render() {
     return (
       <section className="team-stats-container">
-        <h2>TEAM</h2>
-        {this.makeTable()}
+        <h3>TEAM DEFENCE</h3>
+        <table>
+          {this.makeTable()}
+        </table>
       </section>
     );
   }

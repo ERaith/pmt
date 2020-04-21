@@ -5,6 +5,10 @@ export const filterByName = (pokemon, filterSearch) => {
   return isName;
 };
 
+export const generateUID = () =>{
+  return Math.random().toString(10).substring(2,5) + Math.random().toString(10).substring(2,5)
+}
+
 export const filterByType = (pokemon, filterSearch) => {
   let types = pokemon.types;
   filterSearch = `^${filterSearch}`;

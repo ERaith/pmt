@@ -5,6 +5,9 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { rootReducer } from '../../reducers/index';
 import { mockPokemon, mockPokemonList } from '../../../public/mockTestFiles';
+import {generateUID} from '../../utils'
+jest.mock('../../utils');
+
 
 describe('Pokemon Mini Tests Pokedex', () => {
   // eslint-disable-next-line one-var
@@ -33,10 +36,10 @@ describe('Pokemon Mini Tests Pokedex', () => {
     expect(getByText('poison')).toBeInTheDocument();
     expect(getByText('grass')).toBeInTheDocument();
     let bulbasaur = getByAltText('bulbasaur');
-    jest.spyOn(global.Math, 'random').mockImplementationOnce(() => 42);
+    generateUID.mockImplementationOnce(() => 42);
     fireEvent.click(bulbasaur);
     let mockResults = mockPokemonList[0];
-    mockResults['teamID'] = 4200;
+    mockResults['teamID'] = 42;
     expect(mockAddToTeam).toBeCalledWith(mockResults);
   });
 });

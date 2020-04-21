@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import {generateUID} from '../../utils'
 import {
   addPokemonToTeam,
   removePokemonFromTeam,
@@ -40,9 +41,6 @@ export const PokemonMini = ({
     }
   };
 
-  const generateUID = () =>{
-    return Math.random().toString(10).substring(2,5) + Math.random().toString(10).substring(2,5)
-  }
 
   const deletePokemon = () => {
     removePokemonFromTeam(pokemon);

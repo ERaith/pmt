@@ -1,9 +1,9 @@
 import {formatType} from './apiCalls';
-import { mockTypes } from '../../public/mockTestFiles';
+import { mockAPITypes } from '../../public/mockTestFiles';
 
 
 describe('formatting', () => {
-  it('should type of POKEMON_LIST and a correct payload', () => {
+  it('format the type data', () => {
     const expectedAction = {
          "from":{
              "fighting": 2,
@@ -16,7 +16,7 @@ describe('formatting', () => {
            },
     };
 
-    const result = formatType(mockTypes.damage_relations);
+    const result = formatType(mockAPITypes.damage_relations);
 
     expect(result).toEqual(expectedAction);
   });
