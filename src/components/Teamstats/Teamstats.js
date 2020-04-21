@@ -43,7 +43,7 @@ class Teamstats extends React.Component {
       });
 
       let row = (
-        <tr>
+        <tr key = {damageType}>
           <td className={`table-types ${damageType}`}>{damageType}</td>
           {rowInfo}
           <td>{totalWeak}</td>
@@ -65,8 +65,6 @@ class Teamstats extends React.Component {
       </tbody>
     );
   };
-
-
 
   render() {
     return (
