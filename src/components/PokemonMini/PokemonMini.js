@@ -106,3 +106,10 @@ const mapDispatchToProps = (dispatch) =>
   );
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonMini);
+
+PokemonMini.propTypes = {
+  pokemonTeam:PropTypes.array,
+  addPokemonToTeam:PropTypes.func,
+  showDetails:PropTypes.func,
+  removePokemonFromTeam:PropTypes.func,
+};

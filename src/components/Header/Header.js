@@ -1,8 +1,6 @@
 import React from "react";
-import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-export const Header = ({ logout, showModal, user }) => {
+export const Header = () => {
   return (
     <div className="header">
       <h1>Pokémon Team Builder</h1>

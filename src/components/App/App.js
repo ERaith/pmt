@@ -9,6 +9,7 @@ import { loadTypes } from '../../actionCreators/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchTypes } from '../../apiCalls/apiCalls';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
   componentDidMount() {
@@ -56,3 +57,7 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ loadTypes }, dispatch);
 
 export default connect(undefined, mapDispatchToProps)(App);
+
+App.propTypes = {
+  loadTypes:PropTypes.func
+};

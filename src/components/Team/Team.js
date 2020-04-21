@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import PokemonMini from '../PokemonMini/PokemonMini';
 import { saveTeam, removeTeam, goToTeam } from '../../actionCreators/index';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Team extends React.Component {
   constructor() {
@@ -13,7 +14,7 @@ class Team extends React.Component {
     };
   }
   renderPokemonTeam = () => {
-    let { pokemonTeam} = this.props;
+    let { pokemonTeam } = this.props;
     const emptySlots = 6 - pokemonTeam.length;
     const pokemonTeamDefault = new Array(emptySlots);
     pokemonTeamDefault.fill({ name: 'placeholder' });
@@ -110,7 +111,7 @@ class Team extends React.Component {
   };
 
   handleGoTo = (team) => {
-    const { goToTeam, savedTeams } = this.props;
+    const { goToTeam } = this.props;
     this.handleChange(team.teamName);
     goToTeam(team.members);
   };
@@ -123,7 +124,8 @@ class Team extends React.Component {
   showTeams = () => {
     return (
       <div className="Teams">
-        {this.props.savedTeams!=undefined&&this.props.savedTeams.length!=0&&<h2>Teams:</h2>}
+        {this.props.savedTeams !== undefined &&
+          this.props.savedTeams.length !== 0 && <h2>Teams:</h2>}
 
         {this.props.savedTeams.map((team) => {
           return (
@@ -133,8 +135,8 @@ class Team extends React.Component {
               className="nav-link team"
               isActive={(match) => match}
               onClick={() => this.handleGoTo(team)}
-              key = {team.teamName}
-              aria-label = {team.teamName}
+              key={team.teamName}
+              aria-label={team.teamName}
             >
               {team.teamName}
             </NavLink>
@@ -190,3 +192,13 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ saveTeam, removeTeam, goToTeam }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Team);
+
+Team.propTypes = {
+  pokemonTeam: PropTypes.array,
+  filtdetailseredPokemon: PropTypes.array,
+  typeDetails: PropTypes.object,
+  savedTeams: PropTypes.array,
+  saveTeam: PropTypes.func,
+  removeTeam: PropTypes.func,
+  goToTeam: PropTypes.func,
+};

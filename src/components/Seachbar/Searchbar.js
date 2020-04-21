@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { nameFilter, typeFilter, generalFilter } from '../../utils';
+import { generalFilter } from '../../utils';
 import {  filterPokemon } from '../../actionCreators/index';
 import './Searchbar.scss';
+import PropTypes from 'prop-types';
 
 class Searchbar extends React.Component {
   constructor() {
@@ -91,3 +92,10 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ filterPokemon }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);
+
+
+Searchbar.propTypes = {
+  pokemonList:PropTypes.array,
+  filteredPokemon:PropTypes.array,
+  filterPokemon:PropTypes.func,
+};

@@ -32,3 +32,7 @@ const Navbar = ({ path }) => {
 };
 
 export default Navbar;
+
+Navbar.propTypes = {
+  path:PropTypes.string,
+};

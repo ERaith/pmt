@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Teamstats extends React.Component {
 
@@ -81,3 +82,8 @@ const mapStateToProps = ({ pokemonTeam, typeDetails }) => ({
 });
 
 export default connect(mapStateToProps, undefined)(Teamstats);
+
+Teamstats.propTypes = {
+  pokemonTeam:PropTypes.array,
+  typeDetails:PropTypes.object
+};
