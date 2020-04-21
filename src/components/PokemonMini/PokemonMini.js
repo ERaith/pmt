@@ -31,7 +31,7 @@ export const PokemonMini = ({
         showDetails(pokemon);
         break;
       case 'Pokedex':
-        let teamID = Math.floor(Math.random() * 100);
+        let teamID = generateUID()
         let pokemonTeamMember = { ...pokemon, teamID: teamID };
         pokemonTeam.length < 6 && addPokemonToTeam(pokemonTeamMember);
         break;
@@ -39,6 +39,10 @@ export const PokemonMini = ({
         break;
     }
   };
+
+  const generateUID = () =>{
+    return Math.random().toString(10).substring(2,5) + Math.random().toString(10).substring(2,5)
+  }
 
   const deletePokemon = () => {
     removePokemonFromTeam(pokemon);
