@@ -10,6 +10,11 @@ import App from './App';
 
 jest.mock('../../apiCalls/apiCalls');
 
+/*
+look into "filter" on a parent container to dive check query is within container
+*/
+//
+
 describe('Pokedex Tests', () => {
   // eslint-disable-next-line one-var
   let initialState, store, testWrapper;
