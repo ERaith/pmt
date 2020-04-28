@@ -1,4 +1,4 @@
-const BASE_URL = 'http://pokeapi.co/api/v2/';
+const BASE_URL = 'https://pokeapi.co/api/v2/';
 const POKEMON = 'pokemon';
 const LIMIT = '?limit=151';
 const TYPE = 'type/';
