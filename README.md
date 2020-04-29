@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/ERaith/pmt.svg?branch=master)](https://travis-ci.com/ERaith/pmt)
+
 ## Pokemon Builder
 This project is a pokemon builder! The app allows the user to choose which pokemon they want to have on their team and compare their defensive weaknesses to build a devistating team for competition. The user can sort the pokemon by name or type and save their chosen team for later.
 
