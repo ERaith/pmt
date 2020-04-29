@@ -1,5 +1,11 @@
 language: node_js
 node_js:
-  - "node"
+- node
 notifications:
   email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: aLdsNW3lPLWwSSssO5FFV1BX4qkqObq1wBmvCluCmyRd8e8P9l1eSJsYiZZDL+zdmuS6/XmdBK1CIJyogzS8tHtjvpm33s1SRoqJ2HPNvTTxnwGs51bqw61EBGlQPLQ24NknSNUj6JIMwf4BN6aHhK/ZUVdbkOqtTYG4HvhSrNHg81lOKoWs7bs73/g44jjgVnfpvP7WAGE1QfD6XiUI7DMBq6nDSQ0RTjEkteFen5Z2p6KrTfykFpId84/+azsM9GIl5J1ZdRVD8bNT0vFu09RxgXRN8XdnswxZOkIOEDbt9c2sdeRVrW169J1/18nPPPp5HwH/QToJQ5vQLXOfUnPKSal/NU0j81CxUZZX1yQTLDW/RtMWXsldGs+7x6EnqteC/kHeZTAhIC0TVL6iR8yYVR3dDKQME4Jl/ioBZwd3NWB/+sTwZuUAGdm/DBNCOEwdUz/v0xSyzR8jov4IFU/zJsbrNJjxIeTC8BpF3hDeiwwpTzChil4uxTtLVFHMl+CzY9trYdJdX5V5blcnxm7fqMAoUZ0pYIZH6WZq82mRmeeQAEBkMfFErIigY3hU2/xHM38dknP6WlnkeLCzLDU3yCEIyVZ2J5KOAgKEh5+9sP/AEYQ2EN66gNGrd50A1HZp6ai93JwRM0sAstYIVJ0PCiJkZq59L1FjtWywLi0=
+  app: secret-sierra-69834
+  skip_cleanup: true
