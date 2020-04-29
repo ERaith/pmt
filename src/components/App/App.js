@@ -25,6 +25,11 @@ class App extends React.Component {
   render() {
     return (
       <main>
+        <Route
+          exact
+          path="/"
+          render={() => <Redirect to="/pokedex/team/team-rocket" />}
+        />
         <Header />
         <section className="app">
           <Route
