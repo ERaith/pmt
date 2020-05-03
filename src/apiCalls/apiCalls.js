@@ -1,5 +1,7 @@
 const BASE_URL = 'https://pokeapi.co/api/v2/';
 const POKEMON = 'pokemon';
+const GENERATION = 'generation';
+const POKEDEX = 'pokedex/';
 const LIMIT = '?limit=151';
 const TYPE = 'type/';
 
@@ -23,6 +25,36 @@ export const fetchPokemon = async () => {
       }),
     );
     return pokemonData;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const fetchRegionalPokemon = async (regionNumber) => {
+  try {
+    const response = await fetch(BASE_URL + POKEDEX + regionNumber);
+    const regionalPokemon = await response.json();
+    
+    const generalPokemonData = await Promise.all(
+      regionalPokemon.pokemon_entries.map(async (pokemon) => {
+        let pokemonNumber = pokemon.pokemon_species.url
+        let regex = /\/([^\/]+)\/?$/;
+        pokemonNumber = pokemonNumber.match(regex)[1]
+        const detailedResponse = await fetch(BASE_URL+POKEMON+'/'+pokemonNumber);
+        let cleanData = await detailedResponse.json();
+        cleanData = {
+          abilities: cleanData.abilities,
+          sprites: cleanData.sprites,
+          stats: cleanData.stats,
+          types: cleanData.types,
+          name: cleanData.name,
+          id: cleanData.id,
+        };
+        return cleanData;
+
+      }),
+    );
+    return generalPokemonData;
   } catch (error) {
     console.error(error);
   }
