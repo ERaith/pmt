@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { generalFilter } from '../../utils';
-import {  filterPokemon } from '../../actionCreators/index';
+import { fetchRegionalPokemon } from '../../apiCalls/apiCalls';
+import { loadPokemonList, filterPokemon } from '../../actionCreators/index';
 import './Searchbar.scss';
 import PropTypes from 'prop-types';
 
@@ -12,8 +13,18 @@ class Searchbar extends React.Component {
     this.state = {
       name: '',
       type: '',
+      region: '',
     };
   }
+  
+  fetchPokemonList = async (regionNum) => {
+    // eslint-disable-next-line no-shadow
+    const { getPokemonList, filterPokemon } = this.props;
+    const pokemonData = await fetchRegionalPokemon(regionNum);
+    getPokemonList(pokemonData);
+    filterPokemon(pokemonData);
+  };
+
 
   handleChange = (event) => {
     event.preventDefault();
@@ -37,6 +48,9 @@ class Searchbar extends React.Component {
         filteredPokemon = generalFilter(pokemonList, searchName, value);
         filterPokemon(filteredPokemon);
         break;
+      case 'region':
+        this.fetchPokemonList(value)
+        break;
 
       default:
         break;
@@ -44,10 +58,8 @@ class Searchbar extends React.Component {
     this.setState({ [name]: value });
   };
 
-
-
   render() {
-    const { name, type } = this.state;
+    const { name, type, region } = this.state;
     return (
       <form aria-label="pokemon search form">
         <div className="form_group">
@@ -62,6 +74,28 @@ class Searchbar extends React.Component {
           />
           <label className="form_label" htmlFor="name">
             Search by Name
+          </label>
+        </div>
+        <div className="form_group">
+          <select
+            id={region}
+            className="form_field"
+            type="text"
+            placeholder="Change Region"
+            name="region"
+            aria-label="Change Region"
+            onChange={(event) => this.handleChange(event)}
+          >
+            <option value="2">kanto</option>
+            <option value="3">johto</option>
+            <option value="4">hoenn</option>
+            <option value="5">sinnoh</option>
+            <option value="6">unova</option>
+            <option value="7">kalos</option>
+            <option value="9">alola</option>
+          </select>
+          <label className="form_label" htmlFor="name">
+            Region
           </label>
         </div>
         <div className="form_group">
@@ -89,13 +123,12 @@ const mapStateToProps = ({ pokemonList, filteredPokemon }) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ filterPokemon }, dispatch);
+  bindActionCreators({ filterPokemon,getPokemonList:loadPokemonList }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);
 
-
 Searchbar.propTypes = {
-  pokemonList:PropTypes.array,
-  filteredPokemon:PropTypes.array,
-  filterPokemon:PropTypes.func,
+  pokemonList: PropTypes.array,
+  filteredPokemon: PropTypes.array,
+  filterPokemon: PropTypes.func,
 };
