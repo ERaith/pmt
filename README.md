@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/ERaith/pmt.svg?branch=master)](https://travis-ci.com/ERaith/pmt)
+[Live Site](https://secret-sierra-69834.herokuapp.com/pokedex/team/team-rocket)
 
 ## Pokemon Builder
 This project is a pokemon builder! The app allows the user to choose which pokemon they want to have on their team and compare their defensive weaknesses to build a devistating team for competition. The user can sort the pokemon by name or type and save their chosen team for later.
@@ -49,32 +50,6 @@ This project is a pokemon builder! The app allows the user to choose which pokem
 
 ---
 
-## Installation
-
-### Clone
-
-Clone this repo to our local machine using :
-#### `git clone git@github.com:edlsto/rotten-tomatillos.git`
-
-Log in using these credentials:
-username: greg@turing.io
-password: abc123
-
-### Available Scripts
-
-In the project directory, you can run:
-
-#### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-#### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
----
 
 ## Contributors 
 
